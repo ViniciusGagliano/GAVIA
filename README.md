@@ -9,154 +9,152 @@
 <ol type="1">
     <li>
         Reembolsos
-        <br>
         <ol type="a">
             <li>Reembolsos importados: o operativo importa da central a relação de reembolsos a pagar para a pasta
                 reembolso e os adiciona para que sua base fique atualizada;</li>
-            <br>
             <ol type="i">
                 O operativo irá importar os arquivos da central diretamente para o sistema. Assim criando-os dentro do
-                sistema.<br>
+                sistema.
             </ol>
             <li>Reembolsos programados: o operativo verifica se há caixa para realizar os pagamentos e as datas do
                 vencimento do mesmo para fazer a programação;</li>
-            <br>
+
             <ol type="i">
                 O operativo faz a verificação das datas do vencimento e programação dentro do sistema e faz o fechamento
-                dos pagamentos.<br>
+                dos pagamentos.
             </ol>
             <li>Reembolsos cadastrados: o operativo cadastra no banco os mesmos como favorecidos na modalidade DOC, TED
                 ou entre contas do mesmo banco;</li>
-            <br>
+
             <ol type="i">
-                Funcionalidade da ferramenta do Bradesco.<br>
+                Funcionalidade da ferramenta do Bradesco.
             </ol>
             <li>Reembolsos pagos: o operativo aguarda a auditoria e a posterior autorização da diretoria para gerar os
                 comprovantes de pagamentos em PDF;</li>
             <ol type="i"> O pagamento será dos reembolsos presentes no lote do fechamento.</ol>
-            <br>
+
             <li>Reembolsos salvos: o operativo salva os comprovantes na pasta comprovantes;</li>
-            <br>
+
             <ol type="i">
                 Os reembolsos já pagos estarão em uma tela de histórico de pagamento.</ol>
-            <br>
+
             <li>Reembolsos enviados: o operativo envia em nome do representante os comprovantes para o cliente, para
                 central e cópia para o próprio operativo;</li>
-            <br>
+
             <ol type="i"> Processo de e-mail fora do sistema.</ol>
-            <br>
+
             <li>Reembolsos faturados: o operativo aguarda o faturamento da central dos reembolsos pagos para acompanhar
                 o pagamento da Nota de Débito e conciliar os valores.</li>
-            <br>
+
             <ol type="i"> Acompanhamento do status Central dentro do sistema.</ol>
-            <br>
+
         </ol>
     </li>
     <li>Notas de Débito
         <ol type="a">
             <li>Não Faturadas: operativo importa as informações da central para a base de controle das Notas de Débito
                 (data da emissão);</li>
-            <br>
+
             <ol type="i"> Importação do Excel para o sistema.</ol>
             <li>Os reembolsos dentro do sistema irão ser atualizados com as informações automaticamente.</li>
-            <br>
+
             <li>Faturadas: operativo atualiza a base de controle das Notas de Débito com as informações da central (data
                 do envio);</li>
-            <br>
+
             <ol type="i"> Importação do Excel para o sistema.</ol>
             <li>Os reembolsos dentro do sistema irão ser atualizados com as informações automaticamente.</li>
-            <br>
+
             <li>Pagas: o operativo recebe o aviso da seguradora que a relação de Notas de Débito foi paga no dia x;</li>
-            <br>
+
             <ol type="i"> Na área de processamento do sistema, o usuário poderá buscar e marcar a data de pagamento.
             </ol>
         </ol>
     </li>
     <li>Remessas
         <ol type="a">
-            <br>
+
             <li>Calculada: o operativo concilia os sinistros, FEEs, e outros recebíveis internacionais das faturas
                 nacionais, reembolsos nacionais e pagamentos que engloba impostos, CVE, provedores etc. e a diferença
                 faz a remessa;</li>
-            <br>
+
             <ol type="i"> O sistema terá uma tela de busca com filtro, onde poderá buscar e gerar em Excel essas
                 informações. Além disso, os recebíveis fixos já serão calculados quando o reembolso entrar no sistema.
             </ol>
-            <br>
+
             <li>Remetida: o operativo calcula e contrata o dólar pelo MSBANK, e envia a relação dos casos
                 internacionais, junto com a carta padrão do mesmo para as remessas internacionais;</li>
-            <br>
+
             <ol type="i"> A contratação do dólar não estará no sistema, mas a relação dos casos internacionais será
                 gerada pelo relatório.</ol>
         </ol>
     </li>
     <li>Relatórios de auditoria
         <ol type="a">
-            <br>
+
             <li>Relatório de Notas de Débito em aberto;</li>
-            <br>
+
             <ol type="i"> Estará disponível como relatório fixo.</ol>
-            <br>
+
             <li>Relatório de reembolsos pagos e não faturados;</li>
-            <br>
+
             <ol type="i"> Estará disponível como relatório fixo.</ol>
         </ol>
     </li>
     <li>Financeiro
         <ol type="a">
-            <br>
+
             <li>Despesas: operativo cadastra todas as contas a pagar, despesas operacionais, folha de pagamento,
                 impostos, conforme seu vencimento em uma planilha;</li>
-            <br>
+
             <ol type="i"> Cadastramento será feito dentro do sistema na tela de lançar despesas, com as informações
                 acima, gerando um fechamento para ser autorizado.</ol>
-            <br>
+
             <li>Receitas: operativo cadastra todas as receitas a receber;</li>
-            <br>
+
             <ol type="i"> As receitas vindas dos sinistros serão lançadas automaticamente no momento que a data de
                 pagamento for inserida, mas o sistema terá uma tela para lançar receitas manualmente.</ol>
-            <br>
+
             <li>Conciliação: operativo concilia as contas bancárias, despesas e receitas do grupo;</li>
-            <br>
+
             <ol type="i"> DRE do sistema.</ol>
-            <br>
+
             <li>Distribuição: operativo faz a distribuição de lucros entre as empresas do grupo;</li>
-            <br>
+
             <ol type="i"> O sistema terá uma tela para cadastrar lançamentos feitos, onde irá cadastrar essas
                 distribuições.</ol>
-            <br>
+
             <li>Notas fiscais: operativo emite NF referente às comissões, FEEs, e outras receitas;</li>
-            <br>
+
             <ol type="i"> Operação fora do sistema.</ol>
-            <br>
+
             <li>Contabilidade: operativo envia para a contabilidade todos comprovantes de pagamentos de todas as
                 despesas, as receitas e outras para apuração do resultado fiscal.</li>
-            <br>
+
             <ol type="i"> Operação fora do sistema.</ol>
         </ol>
     </li>
     <li>Diretoria
         <ol type="a">
-            <br>
+
             <li>Autoriza os reembolsos;</li>
-            <br>
+
             <ol type="i"> Faz o fechamento de lote dos reembolsos.</ol>
-            <br>
+
             <li>Autoriza os pagamentos das despesas em geral;</li>
-            <br>
+
             <ol type="i"> Faz o fechamento de lote das despesas.</ol>
-            <br>
+
             <li>Gerencia o financeiro e o comercial do grupo de empresas;</li>
-            <br>
+
             <ol type="i"> Visualização por dentro do sistema.</ol>
         </ol>
     </li>
 </ol>
-<br>
-<br>
-<br>
+
+
+
 <h2>OBJETIVO</h2>
-<br>
+
 O sistema Gavia tem como objetivo informatizar os processos realizados hoje pelo operativo da WTA. Este sistema contará
 com diversas funcionalidades que são específicas de um dos módulos apresentados a seguir.
 O modulo de importação são as funcionalidades que permitirá o usuário importar os arquivos em Excel recebidos da
