@@ -18,139 +18,98 @@
             </ol>
             <li>Reembolsos programados: o operativo verifica se há caixa para realizar os pagamentos e as datas do
                 vencimento do mesmo para fazer a programação;</li>
-
             <ol type="i">
                 O operativo faz a verificação das datas do vencimento e programação dentro do sistema e faz o fechamento
                 dos pagamentos.
             </ol>
             <li>Reembolsos cadastrados: o operativo cadastra no banco os mesmos como favorecidos na modalidade DOC, TED
                 ou entre contas do mesmo banco;</li>
-
             <ol type="i">
                 Funcionalidade da ferramenta do Bradesco.
             </ol>
             <li>Reembolsos pagos: o operativo aguarda a auditoria e a posterior autorização da diretoria para gerar os
                 comprovantes de pagamentos em PDF;</li>
             <ol type="i"> O pagamento será dos reembolsos presentes no lote do fechamento.</ol>
-
             <li>Reembolsos salvos: o operativo salva os comprovantes na pasta comprovantes;</li>
-
             <ol type="i">
                 Os reembolsos já pagos estarão em uma tela de histórico de pagamento.</ol>
-
             <li>Reembolsos enviados: o operativo envia em nome do representante os comprovantes para o cliente, para
                 central e cópia para o próprio operativo;</li>
-
             <ol type="i"> Processo de e-mail fora do sistema.</ol>
-
             <li>Reembolsos faturados: o operativo aguarda o faturamento da central dos reembolsos pagos para acompanhar
                 o pagamento da Nota de Débito e conciliar os valores.</li>
-
             <ol type="i"> Acompanhamento do status Central dentro do sistema.</ol>
-
         </ol>
     </li>
     <li>Notas de Débito
         <ol type="a">
             <li>Não Faturadas: operativo importa as informações da central para a base de controle das Notas de Débito
                 (data da emissão);</li>
-
             <ol type="i"> Importação do Excel para o sistema.</ol>
             <li>Os reembolsos dentro do sistema irão ser atualizados com as informações automaticamente.</li>
-
             <li>Faturadas: operativo atualiza a base de controle das Notas de Débito com as informações da central (data
                 do envio);</li>
-
             <ol type="i"> Importação do Excel para o sistema.</ol>
             <li>Os reembolsos dentro do sistema irão ser atualizados com as informações automaticamente.</li>
-
             <li>Pagas: o operativo recebe o aviso da seguradora que a relação de Notas de Débito foi paga no dia x;</li>
-
             <ol type="i"> Na área de processamento do sistema, o usuário poderá buscar e marcar a data de pagamento.
             </ol>
         </ol>
     </li>
     <li>Remessas
         <ol type="a">
-
             <li>Calculada: o operativo concilia os sinistros, FEEs, e outros recebíveis internacionais das faturas
                 nacionais, reembolsos nacionais e pagamentos que engloba impostos, CVE, provedores etc. e a diferença
                 faz a remessa;</li>
-
             <ol type="i"> O sistema terá uma tela de busca com filtro, onde poderá buscar e gerar em Excel essas
                 informações. Além disso, os recebíveis fixos já serão calculados quando o reembolso entrar no sistema.
             </ol>
-
             <li>Remetida: o operativo calcula e contrata o dólar pelo MSBANK, e envia a relação dos casos
                 internacionais, junto com a carta padrão do mesmo para as remessas internacionais;</li>
-
             <ol type="i"> A contratação do dólar não estará no sistema, mas a relação dos casos internacionais será
                 gerada pelo relatório.</ol>
         </ol>
     </li>
     <li>Relatórios de auditoria
         <ol type="a">
-
             <li>Relatório de Notas de Débito em aberto;</li>
-
             <ol type="i"> Estará disponível como relatório fixo.</ol>
-
             <li>Relatório de reembolsos pagos e não faturados;</li>
-
             <ol type="i"> Estará disponível como relatório fixo.</ol>
         </ol>
     </li>
     <li>Financeiro
         <ol type="a">
-
             <li>Despesas: operativo cadastra todas as contas a pagar, despesas operacionais, folha de pagamento,
                 impostos, conforme seu vencimento em uma planilha;</li>
-
             <ol type="i"> Cadastramento será feito dentro do sistema na tela de lançar despesas, com as informações
                 acima, gerando um fechamento para ser autorizado.</ol>
-
             <li>Receitas: operativo cadastra todas as receitas a receber;</li>
-
             <ol type="i"> As receitas vindas dos sinistros serão lançadas automaticamente no momento que a data de
                 pagamento for inserida, mas o sistema terá uma tela para lançar receitas manualmente.</ol>
-
             <li>Conciliação: operativo concilia as contas bancárias, despesas e receitas do grupo;</li>
-
             <ol type="i"> DRE do sistema.</ol>
-
             <li>Distribuição: operativo faz a distribuição de lucros entre as empresas do grupo;</li>
-
             <ol type="i"> O sistema terá uma tela para cadastrar lançamentos feitos, onde irá cadastrar essas
                 distribuições.</ol>
-
             <li>Notas fiscais: operativo emite NF referente às comissões, FEEs, e outras receitas;</li>
-
             <ol type="i"> Operação fora do sistema.</ol>
-
             <li>Contabilidade: operativo envia para a contabilidade todos comprovantes de pagamentos de todas as
                 despesas, as receitas e outras para apuração do resultado fiscal.</li>
-
             <ol type="i"> Operação fora do sistema.</ol>
         </ol>
     </li>
     <li>Diretoria
         <ol type="a">
-
             <li>Autoriza os reembolsos;</li>
-
             <ol type="i"> Faz o fechamento de lote dos reembolsos.</ol>
-
             <li>Autoriza os pagamentos das despesas em geral;</li>
-
             <ol type="i"> Faz o fechamento de lote das despesas.</ol>
-
             <li>Gerencia o financeiro e o comercial do grupo de empresas;</li>
-
             <ol type="i"> Visualização por dentro do sistema.</ol>
         </ol>
     </li>
 </ol>
-
 
 
 <h2>OBJETIVO</h2>
