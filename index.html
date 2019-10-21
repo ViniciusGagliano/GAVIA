@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div class="row" id="vue">
+    <div class="col-md-12">
+        <h1 class="page-header">
+            hellow {{input}}
+        </h1>
+        <span id="span1"></span>
+    </div>
+    <div class="col-md-12">
+        <input type="text" class="form-control" id="btn1">
+        <button class="btn btn-success" @click="Valor();">click</button>
+    </div>
+</div>
+
+<script>
+    const vue = new Vue({
+        el: '#vue',
+        data: {
+            input: ``
+        },
+        methods: {
+            Valor() {
+                this.input = $('#btn1').val();
+                $('#span1').html(this.input);
+            }
+        }
+    });
+</script>
