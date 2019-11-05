@@ -1,5 +1,5 @@
-const appVue = new Vue({
-    el: '#appVue',
+const importacaoSeguroVue = new Vue({
+    el: '#importacaoSeguroVue',
     data: {
         seguradora: 0,
         tipoArquivo: 1,
