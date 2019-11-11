@@ -16,14 +16,112 @@
 <div id="acompanhamentoSinistroVue" v-cloak>
     <div class="col-md-12">
         <!--Datas-->
-        <label for="dtInicial">Data inicial</label>
-        <label for="dtFinal">Data final</label>
-        <label for="tpData">Tipo de data</label>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="dtInicial">Data inicial</label>
+                <input type="date" id="dtInicial" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="dtFinal">Data final</label>
+                <input type="date" id="dtFinal" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="ddlData">Tipo de data</label>
+                <select id="ddlData" class="form-control">
+                    <option value="1">Emissão</option>
+                    <option value="2">Envio seguradora</option>
+                    <option value="3">Previsão de pagamento</option>
+                    <option value="4">Pagamento</option>
+                    <!--ND Sancor-->
+                    <option value="5">Remessa banco</option>
+                    <option value="6">Email WTA</option>
+                    <!--Reembolso-->
+                    <option value="7">Ref Relacão</option>
+                    <option value="8">Prazo para pagamento</option>
+                    <option value="9">Ocorrencia</option>
+                    <option value="10">Recebimento</option>
+                </select>
+            </div>
+        </div>
         <!--Correspondente-->
-        <label for="ddlCompanhia">Companhia</label>
-        <label for="ddlRepresentante">Representante</label>
-        <label for="ddlSeguradora">Seguradora</label>
-        <!--Cliente-->
+        <div class="row">
+            <div class="col-md-2">
+                <label for="txtReferencia">Número de referencia</label>
+                <input type="text" id="txtReferencia" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="ddlCompanhia">Companhia</label>
+                <select id="ddlCompanhia" class="form-control"></select>
+            </div>
+            <div class="col-md-2">
+                <label for="ddlRepresentante">Representante</label>
+                <select id="ddlCompanhia" class="form-control"></select>
+            </div>
+            <div class="col-md-2">
+                <label for="ddlSeguradora">Seguradora</label>
+                <select id="ddlSeguradora" class="form-control"></select>
+            </div>
+            <div class="col-md-2">
+                <label for="ddlCobertura">Cobertura reclamada</label>
+                <input type="text" id="ddlCobertura" class="form-control">
+            </div>
+        </div>
+        <!--Segurado-->
+        <div class="row">
+            <div class="col-md-2">
+                <label for="txtSegurado">Nome do segurado</label>
+                <input type="text" id="txtSegurado" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="txtBeneficiario">Nome do beneficiário</label>
+                <input type="text" id="txtBeneficiario" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="txtBilhete">Número de bilhete</label>
+                <input type="text" id="txtBilhete" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="txtVoucher">Número de voucher</label>
+                <input type="text" id="txtVoucher" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="ddlBanco">Nome do banco</label>
+                <select id="ddlBanco" class="form-control"></select>
+            </div>
+            <div class="col-md-2">
+                <label for="txtAgencia">Número de agência</label>
+                <input type="text" id="txtAgencia" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="txtDigitoAgencia">Digito da agência</label>
+                <input type="text" id="txtDigitoAgencia" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="txtConta">Número de conta</label>
+                <input type="text" id="txtConta" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="txtDigitoConta">Digito da conta</label>
+                <input type="text" id="txtDigitoConta" class="form-control">
+            </div>
+        </div>
+        <!--Valores-->
+        <div class="row">
+            <div class="col-md-2">
+                <label for="txtDolar">Valor em US$</label>
+                <input type="text" id="txtDolar" class="form-control">
+            </div>
+            <div class="col-md-2">
+                <label for="txtReal">Valor em R$</label>
+                <input type="text" id="txtReal" class="form-control">
+            </div>
+        </div>
+        <!---->
+        <div class="row">
+            <div class="col-md-2 pt-3">
+                <button class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
     </div>
 </div>
 

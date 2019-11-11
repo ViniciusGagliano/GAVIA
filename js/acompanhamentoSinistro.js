@@ -1,11 +1,3 @@
-const acompanhamentoSinistroVue = new Vuew({
+const acompanhamentoSinistroVue = new Vue({
     el: '#acompanhamentoSinistroVue',
-    data() {
-        return {
-
-        }
-    },
-    methods: {
-
-    },
 });
