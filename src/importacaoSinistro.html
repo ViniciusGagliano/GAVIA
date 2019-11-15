@@ -68,7 +68,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-4 pb-2">
+                        <div class="col-md-3 pb-2">
                             <label for="ddlSeguradora">Seguradora <b style="color: red;">*</b></label>
                             <select id="ddlSeguradora" class="form-control" v-model="seguradora">
                                 <option value="0">Selecione</option>
@@ -77,16 +77,16 @@
                                 <option value="3">Sompo</option>
                             </select>
                         </div>
-                        <div class="col-md-4" v-if="seguradora == 1">
+                        <div class="col-md-2" v-if="seguradora == 1">
                             <label for="ddlTipoImportacao">Tipo do arquivo</label>
                             <select id="ddlTipoImportacao" class="form-control">
                                 <option value="1">Nota de débito</option>
                                 <option value="2">Reembolso</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <label for="arqSeguradora">Arquivo</label>
-                            <input type="file" id="arqSeguradora">
+                            <input type="file" id="arqSeguradora" class="form-control">
                         </div>
                     </div>
                 </div>
