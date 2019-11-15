@@ -15,9 +15,7 @@ namespace DBConnectionControl
 
         protected void OpenConnection()
         {
-            string server = "localhost";
-            string db = "develop";
-            string connectionString = $"Server=${server}; Database=${db}; Integrated Security=True";
+            string connectionString = $"Server=localhost; Database=EmployeeDB; Integrated Security=True";
 
             this.con = new SqlConnection(connectionString);
             this.cmd = new SqlCommand("", this.con);

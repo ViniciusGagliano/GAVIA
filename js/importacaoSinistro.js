@@ -48,29 +48,32 @@ const importacaoSinistroVue = new Vue({
         },
         async ImportarArquivo() {
             return new Promise((resolve, reject) => {
-                let formData = new FormData();
+                var formData = new FormData();
                 formData.append(this.arquivo.name, this.arquivo);
+                console.log(this.arquivo);
 
-                $.ajax({
-                    type: 'POST',
-                    url: ``,
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    done: response => {
-                        this.arquivo = null;
-                        $('#arqSeguradora').val('');
-                        swal.fire('Sucesso', `Importação concluída`, 'success');
-                        resolve(response);
-                    },
-                    fail: error => {
-                        console.log(error);
-                        swal.fire('Erro', `Importação falhou`, 'error');
-                        reject(error);
-                    },
-                    always: _ => { $.LoadingOverlay('hide'); }
-                });
+                try {
+                    $.ajax({
+                        type: 'POST',
+                        url: `https://localhost:44332/importacao/insert`,
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        done: response => {
+                            this.arquivo = null;
+                            $('#arqSeguradora').val('');
+                            swal.fire('Sucesso', `Importação concluída`, 'success');
+                            resolve(response);
+                        }
+                    });
+                } catch (error) {
+                    console.log(error);
+                    swal.fire('Erro', `Importação falhou`, 'error');
+                    reject(error);
+                } finally {
+                    $.LoadingOverlay('hide');
+                }
             });
         }
     },
