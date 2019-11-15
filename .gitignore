@@ -1,0 +1,17 @@
+\.vs
+\packages
+*.cache
+*.force
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
+*.suo
+*.user
+bin/
+obj/
+Debug/
+Release/
+*.CopyComplete
+*.user
+
