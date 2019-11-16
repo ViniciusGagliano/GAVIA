@@ -50,7 +50,6 @@ const importacaoSinistroVue = new Vue({
             return new Promise((resolve, reject) => {
                 var formData = new FormData();
                 formData.append(this.arquivo.name, this.arquivo);
-                console.log(this.arquivo);
 
                 try {
                     $.ajax({
