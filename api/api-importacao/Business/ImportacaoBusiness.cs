@@ -12,6 +12,8 @@ using _Excel = Microsoft.Office.Interop.Excel;
 using IronXL;
 using ExcelDataReader;
 using ClosedXML.Excel;
+using System.Data;
+using System.Collections;
 
 namespace Business
 {
@@ -47,22 +49,40 @@ namespace Business
             //    var b = cell.GetValue<string>();
             //}
 
-            //WorkBook wb = WorkBook.Load(caminho);
-            //WorkSheet ws = wb.WorkSheets.First();
-            //foreach (var cell in ws["A1:Z11"])
-            //{
-            //    var a = cell.Value;
-            //}
+            WorkBook wb = WorkBook.Load(caminho);
+            WorkSheet ws = wb.WorkSheets.First();
+            var table = ws.ToDataTable(true);
+            DataRow[] rows = table.Select();
+            IEnumerable<DataRow> ts = from processo in table.AsEnumerable() select processo;
+
+            foreach (DataRow dr in ts)
+            {
+                var dt = dr.Field<DateTime>(8);
+            }
+
+            foreach (DataRow r in rows)
+            {
+                var e = r.Field<Double>(0);
+            }
+
+            foreach (DataRow row in table.Rows)
+            {
+                var f = row["CIAS"];
+            }
+
+            foreach (var cell in ws[ws.RangeAddressAsString])
+            {
+                var a = cell.Value;
+            }
 
             //using (var stream = File.Open(caminho, FileMode.Open, FileAccess.Read))
             //{
-            //    IExcelDataReader reader;
-            //    reader = ExcelDataReader.ExcelReaderFactory.CreateReader(stream);
+            //    IExcelDataReader reader = ExcelDataReader.ExcelReaderFactory.CreateReader(stream);
             //    var conf = new ExcelDataSetConfiguration
             //    {
             //        ConfigureDataTable = _ => new ExcelDataTableConfiguration
             //        {
-            //            UseHeaderRow = true
+            //            UseHeaderRow = false
             //        }
             //    };
             //    var dataSet = reader.AsDataSet(conf);

@@ -51,28 +51,25 @@ const importacaoSinistroVue = new Vue({
                 var formData = new FormData();
                 formData.append(this.arquivo.name, this.arquivo);
 
-                try {
-                    $.ajax({
-                        type: 'POST',
-                        url: `https://localhost:44332/importacao/insert`,
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        done: response => {
-                            this.arquivo = null;
-                            $('#arqSeguradora').val('');
-                            swal.fire('Sucesso', `Importação concluída`, 'success');
-                            resolve(response);
-                        }
-                    });
-                } catch (error) {
+                $.ajax({
+                    type: 'POST',
+                    url: `https://localhost:44332/importacao/insert`,
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    done: response => {
+                    }
+                }).done(response => {
+                    this.arquivo = null;
+                    $('#arqSeguradora').val('');
+                    swal.fire('Sucesso', `Importação concluída`, 'success');
+                    resolve(response);
+                }).catch(error => {
                     console.log(error);
                     swal.fire('Erro', `Importação falhou`, 'error');
                     reject(error);
-                } finally {
-                    $.LoadingOverlay('hide');
-                }
+                }).always(() => { $.LoadingOverlay('hide'); })
             });
         }
     },
