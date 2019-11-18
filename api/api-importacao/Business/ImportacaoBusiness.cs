@@ -36,7 +36,28 @@ namespace Business
                 throw new Exception(ex.Message);
             }
         }
-
+        public void GetAll()
+        {
+            try
+            {
+                new ImportacaoRepository().GetAll();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public void GetById(int id)
+        {
+            try
+            {
+                new ImportacaoRepository().GetById(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         private void LerExcel(string name, string caminho)
         {
             //XLWorkbook wb = new XLWorkbook(caminho);

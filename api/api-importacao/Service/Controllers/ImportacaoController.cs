@@ -47,5 +47,34 @@ namespace Service.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("getall")]
+        public HttpResponseMessage GetAll()
+        {
+            try
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new ImportacaoBusiness());
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("getbyid")]
+        public HttpResponseMessage GetById (int id)
+        {
+            try
+            {
+                new ImportacaoBusiness().GetById(id);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }
