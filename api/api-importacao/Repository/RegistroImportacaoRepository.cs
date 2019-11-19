@@ -18,7 +18,7 @@ namespace Repository
                 OpenConnection();
                 using (var cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "";
+                    cmd.CommandText = "UP_REGISTRO_IMPORTACAO";
                     cmd.CommandType = CommandType.Text;
                     dr = cmd.ExecuteReader();
                     if (dr.HasRows)

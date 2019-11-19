@@ -1,4 +1,5 @@
 ﻿using Repository;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -19,17 +20,24 @@ namespace Business
 {
     public class ImportacaoBusiness
     {
+        public ImportacaoRepository Repository { get; set; }
         public _Application Excel { get; set; }
         public Workbook Wb { get; set; }
         public Worksheet Ws { get; set; }
         private readonly string path = $@"C:\inetpub\wwwroot\github\GAVIA";
-        public void InserirImportacao(string fileName, string filePath)
+
+        public ImportacaoBusiness()
+        {
+            Repository = new ImportacaoRepository();
+        }
+
+        public void InserirImportacao(Importacao importacao)
         {
             try
             {
+                Repository.Insert(importacao);
                 //this.OleDbAccess(filePath);
-                this.LerExcel(fileName, filePath);
-                //new ImportacaoRepository().Insert();
+                //this.LerExcel(fileName, filePath);
             }
             catch (Exception ex)
             {

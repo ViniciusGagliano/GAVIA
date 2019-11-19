@@ -1,4 +1,5 @@
 ﻿using Business;
+using Entity;
 using Service.Models;
 using System;
 using System.Collections.Generic;
@@ -16,32 +17,47 @@ namespace Service.Controllers
     [RoutePrefix("importacao")]
     public class ImportacaoController : ApiController
     {
+        public ImportacaoBusiness Business { get; set; }
+
+        public ImportacaoController()
+        {
+            Business = new ImportacaoBusiness();
+        }
+
         [HttpPost]
         [Route("insert")]
         public HttpResponseMessage ImportarArquivo(int seguradoraId, int antecipacao)
         {
             try
             {
-                HttpFileCollection files = HttpContext.Current.Request.Files;
-                if (files.Count > 0)
+                Business.InserirImportacao(new Importacao()
                 {
-                    foreach (string file in files)
-                    {
-                        string name = files[file].FileName;
-                        if (!string.IsNullOrEmpty(name))
-                        {
-                            //Obtendo caminho do arquivo
-                            new ImportacaoBusiness().InserirImportacao(name, HttpContext.Current.Server.MapPath("~/" + name));
-                        }
-                        else
-                            continue;
-                    }
-                    return Request.CreateResponse(HttpStatusCode.OK);
-                }
-                else
-                {
-                    return Request.CreateResponse(HttpStatusCode.NoContent, "Sem arquivo");
-                }
+                    SeguradoraId = seguradoraId,
+                    Antecipacao = Convert.ToBoolean(antecipacao),
+                    CaminhoArquivo = HttpContext.Current.Request.FilePath
+                });
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+                //HttpFileCollection files = HttpContext.Current.Request.Files;
+                //if (files.Count > 0)
+                //{
+                //    foreach (string file in files)
+                //    {
+                //        string name = files[file].FileName;
+                //        if (!string.IsNullOrEmpty(name))
+                //        {
+                //            //Obtendo caminho do arquivo
+                //            new ImportacaoBusiness().InserirImportacao(name, HttpContext.Current.Server.MapPath("~/" + name));
+                //        }
+                //        else
+                //            continue;
+                //    }
+                //    return Request.CreateResponse(HttpStatusCode.OK);
+                //}
+                //else
+                //{
+                //    return Request.CreateResponse(HttpStatusCode.NoContent, "Sem arquivo");
+                //}
             }
             catch (Exception ex)
             {

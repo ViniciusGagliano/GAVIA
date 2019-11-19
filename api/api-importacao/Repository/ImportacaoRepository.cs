@@ -1,4 +1,5 @@
 ﻿using DBConnectionControl;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,14 +12,20 @@ namespace Repository
 {
     public class ImportacaoRepository : Connection
     {
-        public void Insert()
+        public void Insert(Importacao importacao)
         {
             try
             {
                 OpenConnection();
                 using (var cmd = new SqlCommand("", con))
                 {
-
+                    cmd.CommandText = "UP_IMPORTACAO_INSERT";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@NOME_ARQUIVO", SqlDbType.VarChar)).Value = Convert.ToString(importacao.NomeArquivo);
+                    cmd.Parameters.Add(new SqlParameter("@CAMINHO_ARQUIVO", SqlDbType.VarChar)).Value = Convert.ToString(importacao.CaminhoArquivo);
+                    cmd.Parameters.Add(new SqlParameter("@SEGURADORA_ID", SqlDbType.Int)).Value = Convert.ToInt32(importacao.SeguradoraId);
+                    cmd.Parameters.Add(new SqlParameter("@ANTECIPACAO", SqlDbType.Bit)).Value = Convert.ToInt32(importacao.Antecipacao);
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
