@@ -1,4 +1,5 @@
 ﻿using Business;
+using Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -17,7 +18,7 @@ namespace Service.Controllers
     {
         [HttpPost]
         [Route("insert")]
-        public HttpResponseMessage ImportarArquivo()
+        public HttpResponseMessage ImportarArquivo(int seguradoraId, int antecipacao)
         {
             try
             {
@@ -39,12 +40,12 @@ namespace Service.Controllers
                 }
                 else
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.NoContent, "Sem arquivo");
+                    return Request.CreateResponse(HttpStatusCode.NoContent, "Sem arquivo");
                 }
             }
             catch (Exception ex)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
@@ -58,7 +59,7 @@ namespace Service.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
 
@@ -73,7 +74,7 @@ namespace Service.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
     }

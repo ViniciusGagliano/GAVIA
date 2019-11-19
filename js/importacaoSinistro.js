@@ -50,16 +50,44 @@ const importacaoSinistroVue = new Vue({
             return new Promise((resolve, reject) => {
                 var formData = new FormData();
                 formData.append(this.arquivo.name, this.arquivo);
+                let model = {
+                    SeguradoraId: this.seguradora,
+                    Antecipacao: this.tipoArquivo,
+                    Arquivo: formData
+                };
+
+                // var settings = {
+                //     "async": true,
+                //     "crossDomain": true,
+                //     "url": "https://localhost:44332/importacao/insert?seguradoraId=3&antecipacao=1",
+                //     "method": "POST",
+                //     "headers": {
+                //         "seguradoraId": "3",
+                //         "antecipacao": "1",
+                //         "Accept": "*/*",
+                //         "Cache-Control": "no-cache",
+                //         "Host": "localhost:44332",
+                //         "Accept-Encoding": "gzip, deflate",
+                //         "Content-Length": "0",
+                //         "Connection": "keep-alive",
+                //         "cache-control": "no-cache"
+                //     },
+                //     "data": formData
+                // }
+
+                // $.ajax(settings).done(function (response) {
+                //     console.log(response);
+                // });
+                jQuery.support.cors = true;
 
                 $.ajax({
                     type: 'POST',
-                    url: `https://localhost:44332/importacao/insert`,
+                    crossDomain: true,
+                    url: `https://localhost:44332/importacao/insert?seguradoraId=${this.seguradora}&antecipacao=${this.tipoArquivo}`,
                     data: formData,
                     cache: false,
                     contentType: false,
-                    processData: false,
-                    done: response => {
-                    }
+                    processData: false
                 }).done(response => {
                     this.arquivo = null;
                     $('#arqSeguradora').val('');
