@@ -26,16 +26,37 @@ namespace Service.Controllers
 
         [HttpPost]
         [Route("insert")]
-        public HttpResponseMessage ImportarArquivo(int seguradoraId, int antecipacao)
+        public HttpResponseMessage ImportarArquivoAsync(int seguradoraId, int antecipacao)
         {
             try
             {
-                Business.InserirImportacao(new Importacao()
+                HttpFileCollection files = HttpContext.Current.Request.Files;
+
+                if (files.Count == 0)
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, "Sem arquivo");
+
+                string pathService = HttpContext.Current.Server.MapPath("~/ArquivosImportacao/");
+
+                //var provider = new MultipartMemoryStreamProvider();
+                //await Request.Content.ReadAsMultipartAsync(provider);
+                //foreach (var file in provider.Contents)
+                //{
+                //    var fileName = file.Headers.ContentDisposition.FileName.Trim('\"');
+                //    var buffer = await file.ReadAsByteArrayAsync();
+                //}
+
+                foreach (string fileName in files)
                 {
-                    SeguradoraId = seguradoraId,
-                    Antecipacao = Convert.ToBoolean(antecipacao),
-                    CaminhoArquivo = HttpContext.Current.Request.FilePath
-                });
+                    HttpPostedFile file = files[fileName];
+                    file.SaveAs(pathService + file.FileName);
+                    Business.InserirImportacao(new Importacao()
+                    {
+                        SeguradoraId = seguradoraId,
+                        Antecipacao = Convert.ToBoolean(antecipacao),
+                        NomeArquivo = file.FileName.ToString(),
+                        CaminhoArquivo = pathService + file.FileName.ToString()
+                    });
+                }
 
                 return Request.CreateResponse(HttpStatusCode.OK);
                 //HttpFileCollection files = HttpContext.Current.Request.Files;
