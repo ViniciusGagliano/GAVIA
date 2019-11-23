@@ -1,5 +1,6 @@
 ﻿using Business;
 using Entity;
+using Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,24 @@ using System.Web.Http;
 
 namespace Service.Controllers
 {
-    [RoutePrefix("api")]
+    [RoutePrefix("basico")]
     public class SeguradoraController : ApiController
     {
+        private readonly SeguradoraBusiness business;
+
+        public SeguradoraController()
+        {
+            business = new SeguradoraBusiness();
+        }
+
         [HttpPost]
         [Route("seguradoras")]
-        public HttpResponseMessage Insert(SeguradoraEntity seguradora)
+        public HttpResponseMessage Insert(SeguradoraModel seguradora)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, new SeguradoraBusiness().Insert(seguradora));
+                business.Insert(ModelToEntity(seguradora));
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
@@ -32,12 +41,12 @@ namespace Service.Controllers
         {
             try
             {
-                List<SeguradoraEntity> lista = new List<SeguradoraEntity>();
-                Dictionary<string, List<SeguradoraEntity>> seguradoras = new Dictionary<string, List<SeguradoraEntity>>();
-                
-                lista = new SeguradoraBusiness().GetAll();
-                seguradoras.Add("ativos", lista.Where(s => s.Ativo == true).ToList());
-                seguradoras.Add("inativos", lista.Where(s => s.Ativo == false).ToList());
+                List<SeguradoraEntity> lista = business.GetAll();
+                Dictionary<string, List<SeguradoraEntity>> seguradoras = new Dictionary<string, List<SeguradoraEntity>>
+                {
+                    { "ativos", lista.Where(s => s.Ativo == true).ToList() },
+                    { "inativos", lista.Where(s => s.Ativo == false).ToList() }
+                };
 
                 return Request.CreateResponse(HttpStatusCode.OK, seguradoras);
             }
@@ -53,7 +62,7 @@ namespace Service.Controllers
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, new SeguradoraBusiness().GetById(id));
+                return Request.CreateResponse(HttpStatusCode.OK, business.GetById(id));
             }
             catch (Exception ex)
             {
@@ -63,11 +72,13 @@ namespace Service.Controllers
 
         [HttpPut]
         [Route("seguradoras/{id}")]
-        public HttpResponseMessage Update(SeguradoraEntity seguradora)
+        public HttpResponseMessage Update(int id, SeguradoraModel seguradora)
         {
             try
             {
-                new SeguradoraBusiness().Update(seguradora);
+                SeguradoraEntity entity = ModelToEntity(seguradora);
+                entity.Id = id;
+                business.Update(entity);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
@@ -82,13 +93,23 @@ namespace Service.Controllers
         {
             try
             {
-                new SeguradoraBusiness().Delete(id);
+                business.Delete(id);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message.ToString());
             }
+        }
+
+        private SeguradoraEntity ModelToEntity(SeguradoraModel model)
+        {
+            return new SeguradoraEntity()
+            {
+                Nome = model.Nome,
+                CNPJ = model.CNPJ,
+                Antecipacao = model.Antecipacao
+            };
         }
     }
 }
