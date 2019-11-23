@@ -13,5 +13,15 @@ namespace Service
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
+            {
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "Content-Type, Accept, Authorization");
+                HttpContext.Current.Response.End();
+            }
+        }
     }
 }
