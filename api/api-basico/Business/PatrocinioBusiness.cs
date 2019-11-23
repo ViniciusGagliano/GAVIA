@@ -1,39 +1,39 @@
-﻿using Entity;
-using Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entity;
+using Repository;
 
 namespace Business
 {
-    public class RepresentanteBusiness
+    public class PatrocinioBusiness
     {
-        private readonly RepresentanteRepository repository;
+        private readonly PatrocinioRepository repository;
 
-        public RepresentanteBusiness()
+        public PatrocinioBusiness()
         {
-            repository = new RepresentanteRepository();
+            repository = new PatrocinioRepository();
         }
 
-        public void Insert(RepresentanteEntity representante)
+        public void Insert(PatrocinioEntity patrocinio)
         {
             try
             {
-                if (string.IsNullOrEmpty(representante.Nome) || string.IsNullOrEmpty(representante.CNPJ))
+                if (patrocinio.Seguradora.Id.GetValueOrDefault(0) == 0 || patrocinio.Representante.Id.GetValueOrDefault(0) == 0)
                 {
-                    throw new ArgumentNullException("Nome e CNPJ devem ser preenchidos");
+                    throw new ArgumentNullException("Valores nulo ou vazio");
                 }
-                repository.Insert(representante);
+                repository.Insert(patrocinio);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message.ToString());
             }
         }
-        
-        public List<RepresentanteEntity> GetAll()
+
+        public List<PatrocinioEntity> GetAll()
         {
             try
             {
@@ -44,8 +44,8 @@ namespace Business
                 throw new Exception(ex.Message.ToString());
             }
         }
-        
-        public RepresentanteEntity GetById(int id)
+
+        public PatrocinioEntity GetById(int id)
         {
             try
             {
@@ -56,16 +56,16 @@ namespace Business
                 throw new Exception(ex.Message.ToString());
             }
         }
-        
-        public void Update(RepresentanteEntity representante)
+
+        public void Update(PatrocinioEntity patrocinio)
         {
             try
             {
-                if (string.IsNullOrEmpty(representante.Nome) && string.IsNullOrEmpty(representante.CNPJ))
+                if (patrocinio.Seguradora.Id.GetValueOrDefault(0) == 0 && patrocinio.Representante.Id.GetValueOrDefault(0) == 0)
                 {
-                    throw new ArgumentNullException("Nome ou CNPJ devem ser preenchidos");
+                    throw new ArgumentNullException("Valroes nulo ou vazio");
                 }
-                repository.Update(representante);
+                repository.Update(patrocinio);
             }
             catch (Exception ex)
             {

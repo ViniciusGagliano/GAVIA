@@ -11,6 +11,7 @@ namespace Business
     public class SeguradoraBusiness
     {
         private readonly SeguradoraRepository repository;
+
         public SeguradoraBusiness()
         {
             repository = new SeguradoraRepository();
@@ -22,7 +23,7 @@ namespace Business
             {
                 if (string.IsNullOrEmpty(seguradora.Nome) || string.IsNullOrEmpty(seguradora.CNPJ))
                 {
-                    throw new ArgumentNullException("Nome ou CNPJ devem ser preenchidos");
+                    throw new ArgumentNullException("Nome e CNPJ devem ser preenchidos");
                 }
                 repository.Insert(seguradora);
             }
@@ -60,6 +61,10 @@ namespace Business
         {
             try
             {
+                if (string.IsNullOrEmpty(seguradora.Nome) && string.IsNullOrEmpty(seguradora.CNPJ))
+                {
+                    throw new ArgumentNullException("Nome ou CNPJ devem ser preenchidos");
+                }
                 repository.Update(seguradora);
             }
             catch (Exception ex)

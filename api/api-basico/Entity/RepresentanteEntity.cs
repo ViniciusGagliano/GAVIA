@@ -8,7 +8,7 @@ namespace Entity
 {
     public class RepresentanteEntity
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Nome { get; set; }
         public string CNPJ { get; set; }
         public bool Ativo { get; set; }
