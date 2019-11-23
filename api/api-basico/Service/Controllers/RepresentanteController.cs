@@ -41,7 +41,14 @@ namespace Service.Controllers
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, business.GetAll());
+                List<RepresentanteEntity> lista = business.GetAll();
+                Dictionary<string, List<RepresentanteEntity>> representantes = new Dictionary<string, List<RepresentanteEntity>>
+                {
+                    { "ativos", lista.Where(l => l.Ativo == true).ToList() },
+                    { "inativos", lista.Where(l => l.Ativo == false).ToList() }
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, representantes);
             }
             catch (Exception ex)
             {

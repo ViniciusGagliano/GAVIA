@@ -12,7 +12,7 @@ namespace Repository
 {
     public class SeguradoraRepository : Connection
     {
-        public int Insert(SeguradoraEntity seguradora)
+        public void Insert(SeguradoraEntity seguradora)
         {
             try
             {
@@ -22,27 +22,22 @@ namespace Repository
                     cmd.CommandText = "UP_SEGURADORA_CADASTRAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar)).Value = Convert.ToString(seguradora.Nome).Trim();
-                    cmd.Parameters.Add(new SqlParameter("@CNPJ", SqlDbType.VarChar)).Value = Convert.ToString(seguradora.CNPJ);
-                    dr = cmd.ExecuteReader();
-                    int id = 0;
-                    if (dr.HasRows)
-                    {
-                        while (dr.Read())
-                        {
-                            id = Convert.ToInt32(dr["ID"]);
-                        }
-                    }
-                    return id;
+                    cmd.Parameters.Add(new SqlParameter("@CNPJ", SqlDbType.VarChar)).Value = Convert.ToString(seguradora.CNPJ).Trim();
+                    cmd.Parameters.Add(new SqlParameter("@ANTECIPACAO", SqlDbType.Bit)).Value = Convert.ToBoolean(seguradora.Antecipacao);
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message.ToString());
             }
-            finally { CloseConnection(); }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
-        public List<SeguradoraEntity> GetAll(int statusAtivacao)
+        public List<SeguradoraEntity> GetAll()
         {
             try
             {
@@ -51,7 +46,6 @@ namespace Repository
                 {
                     cmd.CommandText = "UP_SEGURADORA_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@APENAS_ATIVO", SqlDbType.Bit)).Value = (statusAtivacao > 1) ? Convert.DBNull : Convert.ToBoolean(statusAtivacao);
                     dr = cmd.ExecuteReader();
                     List<SeguradoraEntity> seguradoras = new List<SeguradoraEntity>();
                     if (dr.HasRows)
@@ -63,8 +57,9 @@ namespace Repository
                                 Id = Convert.ToInt32(dr["ID"]),
                                 Nome = Convert.ToString(dr["NOME"]),
                                 CNPJ = Convert.ToString(dr["CNPJ"]),
+                                Ativo = Convert.ToBoolean(dr["ATIVO"]),
+                                Antecipacao = Convert.ToBoolean(dr["CONTROLA_ANTECIPACAO"]),
                                 DataCriacao = Convert.ToDateTime(dr["DATA_CRIACAO"]),
-                                Ativo = Convert.ToBoolean(dr["ATIVO"])
                             });
                         }
                     }
@@ -75,7 +70,10 @@ namespace Repository
             {
                 throw new Exception(ex.Message.ToString());
             }
-            finally { CloseConnection(); }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
         public SeguradoraEntity GetById(int id)
@@ -96,8 +94,9 @@ namespace Repository
                             Id = Convert.ToInt32(dr["ID"]),
                             Nome = Convert.ToString(dr["NOME"]),
                             CNPJ = Convert.ToString(dr["CNPJ"]),
-                            DataCriacao = Convert.ToDateTime(dr["DATA_CRIACAO"]),
-                            Ativo = Convert.ToBoolean(dr["Ativo"])
+                            Ativo = Convert.ToBoolean(dr["Ativo"]),
+                            Antecipacao = Convert.ToBoolean(dr["CONTROLA_ANTECIPACAO"]),
+                            DataCriacao = Convert.ToDateTime(dr["DATA_CRIACAO"])
                         };
                     }
                 }
@@ -107,7 +106,10 @@ namespace Repository
             {
                 throw new Exception(ex.Message.ToString());
             }
-            finally { CloseConnection(); }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
         public void Update (SeguradoraEntity seguradora)
@@ -120,8 +122,9 @@ namespace Repository
                     cmd.CommandText = "UP_SEGURADORA_ATUALIZAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = Convert.ToInt32(seguradora.Id);
-                    cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.Int)).Value = Convert.ToString(seguradora.Nome).Trim();
-                    cmd.Parameters.Add(new SqlParameter("@CNPJ", SqlDbType.Int)).Value = Convert.ToString(seguradora.CNPJ);
+                    cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar)).Value = (string.IsNullOrEmpty(seguradora.Nome)) ? Convert.DBNull : Convert.ToString(seguradora.Nome).Trim();
+                    cmd.Parameters.Add(new SqlParameter("@CNPJ", SqlDbType.VarChar)).Value = (string.IsNullOrEmpty(seguradora.CNPJ)) ? Convert.DBNull : Convert.ToString(seguradora.CNPJ).Trim();
+                    cmd.Parameters.Add(new SqlParameter("@ANTECIPACAO", SqlDbType.Bit)).Value = Convert.ToBoolean(seguradora.Antecipacao);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -129,7 +132,10 @@ namespace Repository
             {
                 throw new Exception(ex.Message.ToString());
             }
-            finally { CloseConnection(); }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
         public void Delete(int id)
@@ -149,7 +155,10 @@ namespace Repository
             {
                 throw new Exception(ex.Message.ToString());
             }
-            finally { CloseConnection(); }
+            finally
+            {
+                CloseConnection();
+            }
         }
     }
 }

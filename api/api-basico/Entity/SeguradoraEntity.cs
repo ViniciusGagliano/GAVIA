@@ -11,6 +11,7 @@ namespace Entity
         public int? Id { get; set; }
         public string Nome { get; set; }
         public string CNPJ { get; set; }
+        public bool Antecipacao { get; set; }
         public bool Ativo { get; set; }
         public DateTime DataCriacao { get; set; }
     }

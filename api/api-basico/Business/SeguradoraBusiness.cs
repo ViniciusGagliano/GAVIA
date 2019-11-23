@@ -16,11 +16,15 @@ namespace Business
             repository = new SeguradoraRepository();
         }
 
-        public int Insert(SeguradoraEntity seguradora)
+        public void Insert(SeguradoraEntity seguradora)
         {
             try
             {
-                return repository.Insert(seguradora);
+                if (string.IsNullOrEmpty(seguradora.Nome) || string.IsNullOrEmpty(seguradora.CNPJ))
+                {
+                    throw new ArgumentNullException("Nome ou CNPJ devem ser preenchidos");
+                }
+                repository.Insert(seguradora);
             }
             catch (Exception ex)
             {
@@ -32,7 +36,7 @@ namespace Business
         {
             try
             {
-                return repository.GetAll(Convert.ToInt32(StatusAtivacao.Todos));
+                return repository.GetAll();
             }
             catch (Exception ex)
             {

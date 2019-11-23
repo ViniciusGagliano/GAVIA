@@ -13,10 +13,19 @@ namespace Business
     {
         private readonly RepresentanteRepository repository;
 
+        public RepresentanteBusiness()
+        {
+            repository = new RepresentanteRepository();
+        }
+
         public void Insert(RepresentanteEntity representante)
         {
             try
             {
+                if (string.IsNullOrEmpty(representante.Nome) || string.IsNullOrEmpty(representante.CNPJ))
+                {
+                    throw new ArgumentNullException("Nome ou CNPJ devem ser preenchidos");
+                }
                 repository.Insert(representante);
             }
             catch (Exception ex)
