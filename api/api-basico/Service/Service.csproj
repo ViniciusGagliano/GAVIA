@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CentroCustoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaBancariaController.cs" />
     <Compile Include="Controllers\PatrocinioController.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CentroCustoModel.cs" />
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\ContaBancariaModel.cs" />
     <Compile Include="Models\PatrocinioModel.cs" />

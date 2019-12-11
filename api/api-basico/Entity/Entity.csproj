@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CentroCustoEntity.cs" />
     <Compile Include="ClienteEntity.cs" />
     <Compile Include="ContaBancariaEntity.cs" />
     <Compile Include="PatrocinioEntity.cs" />
