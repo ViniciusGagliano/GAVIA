@@ -101,6 +101,8 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ContaBancariaController.cs" />
     <Compile Include="Controllers\PatrocinioController.cs" />
     <Compile Include="Controllers\RepresentanteController.cs" />
     <Compile Include="Controllers\SeguradoraController.cs" />
@@ -108,6 +110,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClienteModel.cs" />
+    <Compile Include="Models\ContaBancariaModel.cs" />
     <Compile Include="Models\PatrocinioModel.cs" />
     <Compile Include="Models\RepresentanteModel.cs" />
     <Compile Include="Models\SeguradoraModel.cs" />
