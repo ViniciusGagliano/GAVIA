@@ -47,6 +47,7 @@
     <Compile Include="CentroCustoRepository.cs" />
     <Compile Include="ClienteRepository.cs" />
     <Compile Include="ContaBancariaRepository.cs" />
+    <Compile Include="FornecedorRepository.cs" />
     <Compile Include="PatrocinioRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepresentanteRepository.cs" />

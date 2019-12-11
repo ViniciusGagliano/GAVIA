@@ -44,6 +44,7 @@
     <Compile Include="CentroCustoEntity.cs" />
     <Compile Include="ClienteEntity.cs" />
     <Compile Include="ContaBancariaEntity.cs" />
+    <Compile Include="FornecedorEntity.cs" />
     <Compile Include="PatrocinioEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepresentanteEntity.cs" />
