@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaRepository.cs" />
     <Compile Include="CentroCustoRepository.cs" />
     <Compile Include="ClienteRepository.cs" />
     <Compile Include="ContaBancariaRepository.cs" />

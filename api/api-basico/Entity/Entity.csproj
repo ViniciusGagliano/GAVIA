@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaEntity.cs" />
     <Compile Include="CentroCustoEntity.cs" />
     <Compile Include="ClienteEntity.cs" />
     <Compile Include="ContaBancariaEntity.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="RepresentanteEntity.cs" />
     <Compile Include="SeguradoraEntity.cs" />
     <Compile Include="StatusAtivacao.cs" />
+    <Compile Include="TipoLancamento.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
