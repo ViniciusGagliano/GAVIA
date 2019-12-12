@@ -48,6 +48,7 @@
     <Compile Include="CentroCustoBusiness.cs" />
     <Compile Include="ClienteBusiness.cs" />
     <Compile Include="ContaBancariaBusiness.cs" />
+    <Compile Include="EmissorBusiness.cs" />
     <Compile Include="FornecedorBusiness.cs" />
     <Compile Include="PatrocinioBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

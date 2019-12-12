@@ -105,6 +105,7 @@
     <Compile Include="Controllers\CentroCustoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaBancariaController.cs" />
+    <Compile Include="Controllers\EmissorController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\PatrocinioController.cs" />
     <Compile Include="Controllers\RepresentanteController.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Models\CentroCustoModel.cs" />
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\ContaBancariaModel.cs" />
+    <Compile Include="Models\EmissorModel.cs" />
     <Compile Include="Models\FornecedorModel.cs" />
     <Compile Include="Models\PatrocinioModel.cs" />
     <Compile Include="Models\RepresentanteModel.cs" />
