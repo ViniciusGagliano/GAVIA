@@ -107,6 +107,7 @@
     <Compile Include="Controllers\ContaBancariaController.cs" />
     <Compile Include="Controllers\EmissorController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
+    <Compile Include="Controllers\ImportacaoController.cs" />
     <Compile Include="Controllers\PatrocinioController.cs" />
     <Compile Include="Controllers\RepresentanteController.cs" />
     <Compile Include="Controllers\SeguradoraController.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Models\ContaBancariaModel.cs" />
     <Compile Include="Models\EmissorModel.cs" />
     <Compile Include="Models\FornecedorModel.cs" />
+    <Compile Include="Models\ImportacaoModel.cs" />
     <Compile Include="Models\PatrocinioModel.cs" />
     <Compile Include="Models\RepresentanteModel.cs" />
     <Compile Include="Models\SeguradoraModel.cs" />
