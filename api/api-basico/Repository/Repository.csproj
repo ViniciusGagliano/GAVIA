@@ -51,6 +51,7 @@
     <Compile Include="EmissorRepository.cs" />
     <Compile Include="FornecedorRepository.cs" />
     <Compile Include="ImportacaoRepository.cs" />
+    <Compile Include="NotaDebitoRepository.cs" />
     <Compile Include="PatrocinioRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepresentanteRepository.cs" />

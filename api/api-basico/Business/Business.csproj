@@ -51,6 +51,7 @@
     <Compile Include="EmissorBusiness.cs" />
     <Compile Include="FornecedorBusiness.cs" />
     <Compile Include="ImportacaoBusiness.cs" />
+    <Compile Include="NotaDebitoBusiness.cs" />
     <Compile Include="PatrocinioBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepresentanteBusiness.cs" />
