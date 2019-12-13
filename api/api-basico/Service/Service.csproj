@@ -101,35 +101,35 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\CategoriaController.cs" />
-    <Compile Include="Controllers\CentroCustoController.cs" />
-    <Compile Include="Controllers\ClienteController.cs" />
-    <Compile Include="Controllers\ContaBancariaController.cs" />
-    <Compile Include="Controllers\EmissorController.cs" />
-    <Compile Include="Controllers\FornecedorController.cs" />
-    <Compile Include="Controllers\ImportacaoController.cs" />
-    <Compile Include="Controllers\NotaDebitoController.cs" />
-    <Compile Include="Controllers\PatrocinioController.cs" />
-    <Compile Include="Controllers\RepresentanteController.cs" />
-    <Compile Include="Controllers\SeguradoController.cs" />
-    <Compile Include="Controllers\SeguradoraController.cs" />
-    <Compile Include="Controllers\TipoSinistroController.cs" />
+    <Compile Include="Controllers\Financeiro\CategoriaController.cs" />
+    <Compile Include="Controllers\Financeiro\CentroCustoController.cs" />
+    <Compile Include="Controllers\Financeiro\ClienteController.cs" />
+    <Compile Include="Controllers\Financeiro\ContaBancariaController.cs" />
+    <Compile Include="Controllers\Acompanhamento\EmissorController.cs" />
+    <Compile Include="Controllers\Financeiro\FornecedorController.cs" />
+    <Compile Include="Controllers\Importacao\ImportacaoController.cs" />
+    <Compile Include="Controllers\Acompanhamento\NotaDebitoController.cs" />
+    <Compile Include="Controllers\Acompanhamento\PatrocinioController.cs" />
+    <Compile Include="Controllers\Acompanhamento\RepresentanteController.cs" />
+    <Compile Include="Controllers\Acompanhamento\SeguradoController.cs" />
+    <Compile Include="Controllers\Acompanhamento\SeguradoraController.cs" />
+    <Compile Include="Controllers\Acompanhamento\TipoSinistroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CategoriaModel.cs" />
-    <Compile Include="Models\CentroCustoModel.cs" />
-    <Compile Include="Models\ClienteModel.cs" />
-    <Compile Include="Models\ContaBancariaModel.cs" />
-    <Compile Include="Models\EmissorModel.cs" />
-    <Compile Include="Models\FornecedorModel.cs" />
-    <Compile Include="Models\ImportacaoModel.cs" />
-    <Compile Include="Models\NotaDebitoModel.cs" />
-    <Compile Include="Models\PatrocinioModel.cs" />
-    <Compile Include="Models\RepresentanteModel.cs" />
-    <Compile Include="Models\SeguradoModel.cs" />
-    <Compile Include="Models\SeguradoraModel.cs" />
-    <Compile Include="Models\TipoSinistroModel.cs" />
+    <Compile Include="Models\Financeiro\CategoriaModel.cs" />
+    <Compile Include="Models\Financeiro\CentroCustoModel.cs" />
+    <Compile Include="Models\Financeiro\ClienteModel.cs" />
+    <Compile Include="Models\Financeiro\ContaBancariaModel.cs" />
+    <Compile Include="Models\Acompanhamento\EmissorModel.cs" />
+    <Compile Include="Models\Financeiro\FornecedorModel.cs" />
+    <Compile Include="Models\Importacao\ImportacaoModel.cs" />
+    <Compile Include="Models\Acompanhamento\NotaDebitoModel.cs" />
+    <Compile Include="Models\Acompanhamento\PatrocinioModel.cs" />
+    <Compile Include="Models\Acompanhamento\RepresentanteModel.cs" />
+    <Compile Include="Models\Acompanhamento\SeguradoModel.cs" />
+    <Compile Include="Models\Acompanhamento\SeguradoraModel.cs" />
+    <Compile Include="Models\Acompanhamento\TipoSinistroModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

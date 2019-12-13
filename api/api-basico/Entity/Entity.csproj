@@ -41,22 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoriaEntity.cs" />
-    <Compile Include="CentroCustoEntity.cs" />
-    <Compile Include="ClienteEntity.cs" />
-    <Compile Include="ContaBancariaEntity.cs" />
-    <Compile Include="EmissorEntity.cs" />
-    <Compile Include="FornecedorEntity.cs" />
-    <Compile Include="ImportacaoEntity.cs" />
-    <Compile Include="NotaDebitoEntity.cs" />
-    <Compile Include="PatrocinioEntity.cs" />
+    <Compile Include="Financeiro\CategoriaEntity.cs" />
+    <Compile Include="Financeiro\CentroCustoEntity.cs" />
+    <Compile Include="Financeiro\ClienteEntity.cs" />
+    <Compile Include="Financeiro\ContaBancariaEntity.cs" />
+    <Compile Include="Acompanhamento\EmissorEntity.cs" />
+    <Compile Include="Financeiro\FornecedorEntity.cs" />
+    <Compile Include="Importacao\ImportacaoEntity.cs" />
+    <Compile Include="Acompanhamento\NotaDebitoEntity.cs" />
+    <Compile Include="Acompanhamento\PatrocinioEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepresentanteEntity.cs" />
-    <Compile Include="SeguradoEntity.cs" />
-    <Compile Include="SeguradoraEntity.cs" />
+    <Compile Include="Acompanhamento\RepresentanteEntity.cs" />
+    <Compile Include="Acompanhamento\SeguradoEntity.cs" />
+    <Compile Include="Acompanhamento\SeguradoraEntity.cs" />
     <Compile Include="StatusAtivacao.cs" />
-    <Compile Include="TipoLancamento.cs" />
-    <Compile Include="TipoSinistroEntity.cs" />
+    <Compile Include="Financeiro\TipoLancamento.cs" />
+    <Compile Include="Acompanhamento\TipoSinistroEntity.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
