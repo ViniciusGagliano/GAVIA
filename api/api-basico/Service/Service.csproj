@@ -110,6 +110,7 @@
     <Compile Include="Controllers\ImportacaoController.cs" />
     <Compile Include="Controllers\PatrocinioController.cs" />
     <Compile Include="Controllers\RepresentanteController.cs" />
+    <Compile Include="Controllers\SeguradoController.cs" />
     <Compile Include="Controllers\SeguradoraController.cs" />
     <Compile Include="Controllers\TipoSinistroController.cs" />
     <Compile Include="Global.asax.cs">
@@ -124,6 +125,7 @@
     <Compile Include="Models\ImportacaoModel.cs" />
     <Compile Include="Models\PatrocinioModel.cs" />
     <Compile Include="Models\RepresentanteModel.cs" />
+    <Compile Include="Models\SeguradoModel.cs" />
     <Compile Include="Models\SeguradoraModel.cs" />
     <Compile Include="Models\TipoSinistroModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

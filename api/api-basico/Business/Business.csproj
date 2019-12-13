@@ -54,6 +54,7 @@
     <Compile Include="PatrocinioBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepresentanteBusiness.cs" />
+    <Compile Include="SeguradoBusiness.cs" />
     <Compile Include="SeguradoraBusiness.cs" />
     <Compile Include="TipoSinistroBusiness.cs" />
   </ItemGroup>

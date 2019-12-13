@@ -51,6 +51,7 @@
     <Compile Include="PatrocinioEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepresentanteEntity.cs" />
+    <Compile Include="SeguradoEntity.cs" />
     <Compile Include="SeguradoraEntity.cs" />
     <Compile Include="StatusAtivacao.cs" />
     <Compile Include="TipoLancamento.cs" />
