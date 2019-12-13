@@ -54,6 +54,7 @@
     <Compile Include="SeguradoraEntity.cs" />
     <Compile Include="StatusAtivacao.cs" />
     <Compile Include="TipoLancamento.cs" />
+    <Compile Include="TipoSinistroEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

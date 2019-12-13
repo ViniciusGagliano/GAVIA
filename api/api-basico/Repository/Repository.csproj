@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepresentanteRepository.cs" />
     <Compile Include="SeguradoraRepository.cs" />
+    <Compile Include="TipoSinistroRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entity\Entity.csproj">
