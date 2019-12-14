@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acompanhamento\FechamentoEntity.cs" />
     <Compile Include="Financeiro\CategoriaEntity.cs" />
     <Compile Include="Financeiro\CentroCustoEntity.cs" />
     <Compile Include="Financeiro\ClienteEntity.cs" />
