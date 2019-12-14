@@ -51,6 +51,7 @@
     <Compile Include="Financeiro\ContaBancariaBusiness.cs" />
     <Compile Include="Acompanhamento\EmissorBusiness.cs" />
     <Compile Include="Financeiro\FornecedorBusiness.cs" />
+    <Compile Include="Financeiro\LancamentoBusiness.cs" />
     <Compile Include="Importacao\ImportacaoBusiness.cs" />
     <Compile Include="Acompanhamento\NotaDebitoBusiness.cs" />
     <Compile Include="Acompanhamento\PatrocinioBusiness.cs" />

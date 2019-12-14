@@ -108,6 +108,7 @@
     <Compile Include="Controllers\Financeiro\ContaBancariaController.cs" />
     <Compile Include="Controllers\Acompanhamento\EmissorController.cs" />
     <Compile Include="Controllers\Financeiro\FornecedorController.cs" />
+    <Compile Include="Controllers\Financeiro\LancamentoController.cs" />
     <Compile Include="Controllers\Importacao\ImportacaoController.cs" />
     <Compile Include="Controllers\Acompanhamento\NotaDebitoController.cs" />
     <Compile Include="Controllers\Acompanhamento\PatrocinioController.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="Models\Financeiro\ContaBancariaModel.cs" />
     <Compile Include="Models\Acompanhamento\EmissorModel.cs" />
     <Compile Include="Models\Financeiro\FornecedorModel.cs" />
+    <Compile Include="Models\Financeiro\LancamentoModel.cs" />
     <Compile Include="Models\Importacao\ImportacaoModel.cs" />
     <Compile Include="Models\Acompanhamento\NotaDebitoModel.cs" />
     <Compile Include="Models\Acompanhamento\PatrocinioModel.cs" />

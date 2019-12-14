@@ -48,6 +48,7 @@
     <Compile Include="Financeiro\ContaBancariaEntity.cs" />
     <Compile Include="Acompanhamento\EmissorEntity.cs" />
     <Compile Include="Financeiro\FornecedorEntity.cs" />
+    <Compile Include="Financeiro\LancamentoEntity.cs" />
     <Compile Include="Importacao\ImportacaoEntity.cs" />
     <Compile Include="Acompanhamento\NotaDebitoEntity.cs" />
     <Compile Include="Acompanhamento\PatrocinioEntity.cs" />

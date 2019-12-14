@@ -21,9 +21,9 @@ namespace Repository.Acompanhamento
 				{
 					cmd.CommandText = "UP_FECHAMENTO_CADASTRAR";
 					cmd.CommandType = CommandType.StoredProcedure;
-					cmd.Parameters.Add(new SqlParameter("@DATA_FECHAMENTO", SqlDbType.Int)).Value = fechamento.DataFechamento;
-					cmd.Parameters.Add(new SqlParameter("@REMESSA", SqlDbType.Int)).Value = fechamento.Remessa;
-					cmd.Parameters.Add(new SqlParameter("@DOLAR_REMESSA", SqlDbType.Int)).Value = fechamento.DolarRemessa;
+					cmd.Parameters.Add(new SqlParameter("@DATA_FECHAMENTO", SqlDbType.SmallDateTime)).Value = fechamento.DataFechamento;
+					cmd.Parameters.Add(new SqlParameter("@REMESSA", SqlDbType.Bit)).Value = fechamento.Remessa;
+					cmd.Parameters.Add(new SqlParameter("@DOLAR_REMESSA", SqlDbType.Money)).Value = fechamento.DolarRemessa;
 					cmd.Parameters.Add(new SqlParameter("@EMISSOR_ID", SqlDbType.Int)).Value = fechamento.Emissor.Id;
 					cmd.ExecuteNonQuery();
 				}
@@ -125,9 +125,9 @@ namespace Repository.Acompanhamento
 					cmd.CommandText = "UP_FECHAMENTO_ATUALIZAR";
 					cmd.CommandType = CommandType.StoredProcedure;
 					cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = fechamento.Id;
-					cmd.Parameters.Add(new SqlParameter("@DATA_FECHAMENTO", SqlDbType.Int)).Value = fechamento.DataFechamento;
-					cmd.Parameters.Add(new SqlParameter("@REMESSA", SqlDbType.Int)).Value = fechamento.Remessa;
-					cmd.Parameters.Add(new SqlParameter("@DOLAR_REMESSA", SqlDbType.Int)).Value = fechamento.DolarRemessa;
+					cmd.Parameters.Add(new SqlParameter("@DATA_FECHAMENTO", SqlDbType.SmallDateTime)).Value = fechamento.DataFechamento;
+					cmd.Parameters.Add(new SqlParameter("@REMESSA", SqlDbType.Bit)).Value = fechamento.Remessa;
+					cmd.Parameters.Add(new SqlParameter("@DOLAR_REMESSA", SqlDbType.Money)).Value = fechamento.DolarRemessa;
 					cmd.Parameters.Add(new SqlParameter("@EMISSOR_ID", SqlDbType.Int)).Value = fechamento.Emissor.Id;
 					cmd.ExecuteNonQuery();
 				}
