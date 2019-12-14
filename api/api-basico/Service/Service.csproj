@@ -116,6 +116,7 @@
     <Compile Include="Controllers\Acompanhamento\SeguradoController.cs" />
     <Compile Include="Controllers\Acompanhamento\SeguradoraController.cs" />
     <Compile Include="Controllers\Acompanhamento\TipoSinistroController.cs" />
+    <Compile Include="Controllers\Importacao\RegistroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,6 +135,7 @@
     <Compile Include="Models\Acompanhamento\SeguradoModel.cs" />
     <Compile Include="Models\Acompanhamento\SeguradoraModel.cs" />
     <Compile Include="Models\Acompanhamento\TipoSinistroModel.cs" />
+    <Compile Include="Models\Importacao\RegistroModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

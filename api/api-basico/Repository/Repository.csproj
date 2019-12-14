@@ -55,6 +55,7 @@
     <Compile Include="Importacao\ImportacaoRepository.cs" />
     <Compile Include="Acompanhamento\NotaDebitoRepository.cs" />
     <Compile Include="Acompanhamento\PatrocinioRepository.cs" />
+    <Compile Include="Importacao\RegistroRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Acompanhamento\RepresentanteRepository.cs" />
     <Compile Include="Acompanhamento\SeguradoraRepository.cs" />

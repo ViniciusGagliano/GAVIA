@@ -52,6 +52,7 @@
     <Compile Include="Importacao\ImportacaoEntity.cs" />
     <Compile Include="Acompanhamento\NotaDebitoEntity.cs" />
     <Compile Include="Acompanhamento\PatrocinioEntity.cs" />
+    <Compile Include="Importacao\RegistroEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Acompanhamento\RepresentanteEntity.cs" />
     <Compile Include="Acompanhamento\SeguradoEntity.cs" />

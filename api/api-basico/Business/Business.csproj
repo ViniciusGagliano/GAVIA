@@ -55,6 +55,7 @@
     <Compile Include="Importacao\ImportacaoBusiness.cs" />
     <Compile Include="Acompanhamento\NotaDebitoBusiness.cs" />
     <Compile Include="Acompanhamento\PatrocinioBusiness.cs" />
+    <Compile Include="Importacao\RegistroBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Acompanhamento\RepresentanteBusiness.cs" />
     <Compile Include="Acompanhamento\SeguradoBusiness.cs" />
