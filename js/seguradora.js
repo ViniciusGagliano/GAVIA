@@ -12,7 +12,6 @@ const seguradoraVue = new Vue({
             nome: '',
             cnpj: '',
             antecipacao: false,
-            edicao: false,
             arraySeguradora: []
         }
     },
