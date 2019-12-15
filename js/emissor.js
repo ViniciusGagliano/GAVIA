@@ -1,17 +1,16 @@
-const urlGlobal = `https://localhost:44318/basico/representantes`;
+const urlGlobal = `https://localhost:44318/basico/emissores`;
 const axiosSettings = {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded', "Access-Control-Allow-Origin": true, },
     withCredentials: false,
 };
 
-const representanteVue = new Vue({
-    el: '#representanteVue',
+const emissorVue = new Vue({
+    el: '#emissorVue',
     data() {
         return {
             id: 0,
             nome: '',
-            cnpj: '',
-            arrayRepresentante: []
+            arrayEmissor: []
         }
     },
     beforeCreate() { $.LoadingOverlay('show'); },
@@ -21,8 +20,8 @@ const representanteVue = new Vue({
     mounted() { $.LoadingOverlay('hide'); },
     methods: {
         ValidarDados() {
-            if (!this.nome || !this.cnpj) {
-                Swal.fire('Atenção', `Os campos nome e cnpj são obrigatórios`, 'warning');
+            if (!this.nome) {
+                Swal.fire('Atenção', `O campo nome é obrigatório`, 'warning');
                 return false;
             }
 
@@ -30,40 +29,39 @@ const representanteVue = new Vue({
         },
         PreencherCampos(id) {
             this.id = id;
-            let representante = this.arrayRepresentante.filter(s => s.Id === id);
-            this.nome = representante.Nome;
-            this.cnpj = representante.CNPJ;
+            let emissor = this.arrayEmissor.filter(s => s.Id === id);
+            this.nome = emissor.Nome;
         },
         async Cadastrar() {
             $.LoadingOverlay('show');
-            // axios.post(`${urlGlobal}`, `Nome=${this.nome}&CNPJ=${this.cnpj}`, axiosSettings).then(_ => {
-            //     Swal.fire('Sucesso', 'Cadastro realizado com sucesso', 'success');
-            //     this.Carregar();
-            // }).catch(error => {
-            //     Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
-            //     console.log(error);
-            // }).finally(_ => $.LoadingOverlay('hide'));
-            await $.ajax({
-                type: 'POST',
-                crossDomain: true,
-                url: `${urlGlobal}`,
-                data: {
-                    Nome: this.nome,
-                    CNPJ: this.cnpj
-                }
-            }).done(_ => {
+
+            axios.post(`${urlGlobal}`, `Nome=${this.nome}`, axiosSettings).then(_ => {
                 Swal.fire('Sucesso', 'Cadastro realizado com sucesso', 'success');
                 this.Carregar();
-            }).error(error => {
+            }).catch(error => {
                 Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
                 console.log(error);
-            }).always(_ => $.LoadingOverlay('hide'));
+            }).finally(_ => $.LoadingOverlay('hide'));
+
+            // await $.ajax({
+            //     type: 'POST',
+            //     crossDomain: true,
+            //     url: `${urlGlobal}`,
+            //     data: {
+            //         Nome: this.nome
+            //     }
+            // }).done(_ => {
+            //     Swal.fire('Sucesso', 'Cadastro realizado com sucesso', 'success');
+            //     this.Carregar();
+            // }).error(error => {
+            //     Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
+            //     console.log(error);
+            // }).always(_ => $.LoadingOverlay('hide'));
         },
         async Editar() {
             $.LoadingOverlay('show');
             await axios.put(`${urlGlobal}/${this.id}`, {
-                Nome: this.nome,
-                CNPJ: this.cnpj
+                Nome: this.nome
             }, axiosSettings).then(_ => {
                 Swal.fire('Sucesso', 'Dados alterado com sucesso', 'success');
                 this.Carregar();
@@ -74,7 +72,7 @@ const representanteVue = new Vue({
         },
         async Excluir(id) {
             Swal.fire({
-                title: 'Deseja excluir esse representante?',
+                title: 'Deseja excluir esse emissor?',
                 text: `Essa operação não poderá ser desfeita`,
                 icon: `warning`,
                 showCancelButton: true,
@@ -84,7 +82,7 @@ const representanteVue = new Vue({
                     axios.delete(`${urlGlobal}/${id}`, {
                         withCredentials: true
                     }).then(_ => {
-                        Swal.fire('Sucesso', 'Representante excluído com sucesso', 'success');
+                        Swal.fire('Sucesso', 'Emissor excluído com sucesso', 'success');
                         this.Carregar();
                     }).catch(error => {
                         Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
@@ -100,7 +98,7 @@ const representanteVue = new Vue({
                     return false;
                 }
 
-                this.arrayRepresentante = response.data['ativos'];
+                this.arrayEmissor = response.data['ativos'];
             }).catch(error => {
                 console.log(error);
             });
