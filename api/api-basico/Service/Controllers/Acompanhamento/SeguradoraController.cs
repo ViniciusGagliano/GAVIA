@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Service.Controllers
 {
@@ -41,14 +42,7 @@ namespace Service.Controllers
         {
             try
             {
-                List<SeguradoraEntity> lista = business.GetAll();
-                Dictionary<string, List<SeguradoraEntity>> seguradoras = new Dictionary<string, List<SeguradoraEntity>>
-                {
-                    { "ativos", lista.Where(s => s.Ativo == true).ToList() },
-                    { "inativos", lista.Where(s => s.Ativo == false).ToList() }
-                };
-
-                return Request.CreateResponse(HttpStatusCode.OK, seguradoras);
+                return Request.CreateResponse(HttpStatusCode.OK, business.GetAll());
             }
             catch (Exception ex)
             {

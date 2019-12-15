@@ -21,15 +21,15 @@ namespace Repository
                 {
                     cmd.CommandText = "UP_SEGURADORA_CADASTRAR";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar)).Value = Convert.ToString(seguradora.Nome).Trim();
-                    cmd.Parameters.Add(new SqlParameter("@CNPJ", SqlDbType.VarChar)).Value = Convert.ToString(seguradora.CNPJ).Trim();
+                    cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar)).Value = seguradora.Nome;
+                    cmd.Parameters.Add(new SqlParameter("@CNPJ", SqlDbType.VarChar)).Value = seguradora.CNPJ;
                     cmd.Parameters.Add(new SqlParameter("@ANTECIPACAO", SqlDbType.Bit)).Value = Convert.ToBoolean(seguradora.Antecipacao);
                     cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message.ToString());
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -58,8 +58,7 @@ namespace Repository
                                 Nome = Convert.ToString(dr["NOME"]),
                                 CNPJ = Convert.ToString(dr["CNPJ"]),
                                 Ativo = Convert.ToBoolean(dr["ATIVO"]),
-                                Antecipacao = Convert.ToBoolean(dr["CONTROLA_ANTECIPACAO"]),
-                                DataCriacao = Convert.ToDateTime(dr["DATA_CRIACAO"]),
+                                Antecipacao = Convert.ToBoolean(dr["ANTECIPACAO"])
                             });
                         }
                     }
@@ -80,27 +79,30 @@ namespace Repository
         {
             try
             {
-                cmd.CommandText = "UP_SEGURADORA_BUSCAR";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Bit)).Value = Convert.ToInt32(id);
-                dr = cmd.ExecuteReader();
-                SeguradoraEntity seguradora = null;
-                if (dr.HasRows)
+                OpenConnection();
+                using (cmd = new SqlCommand("", con))
                 {
-                    while (dr.Read())
+                    cmd.CommandText = "UP_SEGURADORA_BUSCAR";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
+                    dr = cmd.ExecuteReader();
+                    SeguradoraEntity seguradora = null;
+                    if (dr.HasRows)
                     {
-                        seguradora = new SeguradoraEntity()
+                        while (dr.Read())
                         {
-                            Id = Convert.ToInt32(dr["ID"]),
-                            Nome = Convert.ToString(dr["NOME"]),
-                            CNPJ = Convert.ToString(dr["CNPJ"]),
-                            Ativo = Convert.ToBoolean(dr["Ativo"]),
-                            Antecipacao = Convert.ToBoolean(dr["CONTROLA_ANTECIPACAO"]),
-                            DataCriacao = Convert.ToDateTime(dr["DATA_CRIACAO"])
-                        };
+                            seguradora = new SeguradoraEntity()
+                            {
+                                Id = Convert.ToInt32(dr["ID"]),
+                                Nome = Convert.ToString(dr["NOME"]),
+                                CNPJ = Convert.ToString(dr["CNPJ"]),
+                                Ativo = Convert.ToBoolean(dr["Ativo"]),
+                                Antecipacao = Convert.ToBoolean(dr["ANTECIPACAO"])
+                            };
+                        }
                     }
+                    return seguradora;
                 }
-                return seguradora;
             }
             catch (Exception ex)
             {

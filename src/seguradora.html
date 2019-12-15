@@ -6,6 +6,9 @@
     crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script
+    src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <style>
     [v-cloak] {
@@ -14,7 +17,7 @@
 </style>
 
 <div id="seguradoraVue" v-cloak>
-    <div class="row">
+    <div class="row p-3">
         <div class="col-md-5">
             <div class="card">
                 <div class="card-header">
@@ -23,23 +26,23 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="txtNome">Nome</label>
-                            <input type="text" id="txtNome" class="form-control">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" v-model="nome">
                         </div>
                         <div class="col-md-6">
-                            <label for="txtCNPJ">CNPJ</label>
-                            <input type="text" id="txtCNPJ" class="form-control">
+                            <label>CNPJ</label>
+                            <input type="text" class="form-control" v-model="cnpj">
                         </div>
                     </div>
                     <div class="row pt-3">
                         <div class="col-sm-3 pr-0">
-                            <button class="btn btn-primary">
-                                Cadastrar
+                            <button class="btn btn-primary" @click="ValidarDados()">
+                                {{(!id) ? `Cadastrar` : `Editar`}}
                             </button>
                         </div>
                         <div class="col-sm-6 pl-0">
-                            <input type="checkbox" id="chkAntecipa">
-                            <label for="chkAntecipa" style="padding-top: 8px; padding-left: 3px;">
+                            <input type="checkbox" v-model="antecipacao" v-model="antecipacao">
+                            <label style="padding-top: 8px; padding-left: 3px;">
                                 Controla antecipacão?
                             </label>
                         </div>
@@ -57,13 +60,19 @@
                                 <th class="text-center">Nome</th>
                                 <th class="text-center">CNPJ</th>
                                 <th class="text-center">Antecipacão</th>
+                                <th class="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Sancor</td>
-                                <td>159326484818</td>
-                                <td>Sim</td>
+                            <tr v-for="seguradora in arraySeguradora">
+                                <td>{{seguradora.Nome}}</td>
+                                <td>{{seguradora.CNPJ}}</td>
+                                <td>{{seguradora.Antecipacao}}</td>
+                                <td>
+                                    <button class="btn btn-primary"
+                                        @click="PreencherCampos(seguradora.Id)">Editar</button>
+                                    <button class="btn btn-danger" @click="Excluir(seguradora.Id)">Excluir</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

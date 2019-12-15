@@ -15,7 +15,7 @@ namespace DBConnectionControl
 
         protected void OpenConnection()
         {
-            string connectionString = $"Server=localhost; Database=develop; Integrated Security=True";
+            string connectionString = $@"Server=localhost\SQLEXPRESS; Database=develop; Integrated Security=True";
 
             this.con = new SqlConnection(connectionString);
             this.cmd = new SqlCommand("", this.con);

@@ -13,6 +13,5 @@ namespace Entity
         public string CNPJ { get; set; }
         public bool Antecipacao { get; set; }
         public bool Ativo { get; set; }
-        public DateTime DataCriacao { get; set; }
     }
 }

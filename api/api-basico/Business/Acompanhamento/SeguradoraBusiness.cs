@@ -17,15 +17,18 @@ namespace Business
             repository = new SeguradoraRepository();
         }
 
-        public void Insert(SeguradoraEntity seguradora)
+        public void Insert(SeguradoraEntity seguradora) => repository.Insert(seguradora);
+
+        public Dictionary<string, List<SeguradoraEntity>> GetAll()
         {
             try
             {
-                if (string.IsNullOrEmpty(seguradora.Nome) || string.IsNullOrEmpty(seguradora.CNPJ))
+                List<SeguradoraEntity> seguradoras = repository.GetAll();
+                return new Dictionary<string, List<SeguradoraEntity>>
                 {
-                    throw new ArgumentNullException("Nome e CNPJ devem ser preenchidos");
-                }
-                repository.Insert(seguradora);
+                    { "ativos", seguradoras.Where(s => s.Ativo == true).ToList() },
+                    { "inativos", seguradoras.Where(s => s.Ativo == false).ToList() }
+                };
             }
             catch (Exception ex)
             {
@@ -33,56 +36,10 @@ namespace Business
             }
         }
 
-        public List<SeguradoraEntity> GetAll()
-        {
-            try
-            {
-                return repository.GetAll();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message.ToString());
-            }
-        }
+        public SeguradoraEntity GetById(int _id) => repository.GetById(_id);
 
-        public SeguradoraEntity GetById(int _id)
-        {
-            try
-            {
-                return repository.GetById(_id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message.ToString());
-            }
-        }
+        public void Update(SeguradoraEntity seguradora) => repository.Update(seguradora);
 
-        public void Update(SeguradoraEntity seguradora)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(seguradora.Nome) && string.IsNullOrEmpty(seguradora.CNPJ))
-                {
-                    throw new ArgumentNullException("Nome ou CNPJ devem ser preenchidos");
-                }
-                repository.Update(seguradora);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message.ToString());
-            }
-        }
-
-        public void Delete(int id)
-        {
-            try
-            {
-                repository.Delete(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message.ToString());
-            }
-        }
+        public void Delete(int id) => repository.Delete(id);
     }
 }
