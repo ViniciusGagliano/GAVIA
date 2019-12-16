@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Emissor</title>
+    <title>Fornecedor</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -58,7 +58,7 @@
                             <li><a href="seguradora.html">Seguradora</a></li>
                             <li><a href="representante.html">Representante</a></li>
                             <li><a href="patrocinio.html">Patrocinio</a></li>
-                            <li class="active"><a href="emissor.html">Emissor</a></li>
+                            <li><a href="emissor.html">Emissor</a></li>
                             <li><a href="sinistro.html">Sinistros</a></li>
                         </ul>
                     </li>
@@ -71,7 +71,7 @@
                             <li><a href="centroCusto.html">Centro de Custo</a></li>
                             <li><a href="cliente.html">Cliente</a></li>
                             <li><a href="contaBancaria.html">Conta Bancária</a></li>
-                            <li><a href="fornecedor.html">Fornecedor</a></li>
+                            <li class="active"><a href="fornecedor.html">Fornecedor</a></li>
                             <li><a href="lancamento.html">Lançamento</a></li>
                         </ul>
                     </li>
@@ -79,12 +79,12 @@
             </nav>
         </div>
         <!-- Miolo -->
-        <div class="col-md-10 pl-4" id="emissorVue" v-cloak>
+        <div class="col-md-10 pl-4" id="fornecedorVue" v-cloak>
             <div class="row pl-4">
                 <div class="col-sm-5 pr-1">
                     <div class="card">
                         <div class="card-header">
-                            Cadastrar Emissor
+                            Cadastrar Fornecedor
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-sm-7 pl-1">
                     <div class="card pr-2">
-                        <div class="card-header">Buscar Emissor</div>
+                        <div class="card-header">Buscar Fornecedor</div>
                         <div class="card-body">
                             <table class="table table-bordered table-hover table-striped table-sm">
                                 <thead class="thead-dark">
@@ -115,12 +115,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="emissor in arrayEmissor">
-                                        <td>{{emissor.Nome}}</td>
+                                    <tr v-for="fornecedor in arrayFornecedor">
+                                        <td>{{fornecedor.Nome}}</td>
                                         <td>
                                             <button class="btn btn-primary"
-                                                @click="PreencherCampos(emissor.Id)">Editar</button>
-                                            <button class="btn btn-danger" @click="Excluir(emissor.Id)">Excluir</button>
+                                                @click="PreencherCampos(fornecedor.Id)">Editar</button>
+                                            <button class="btn btn-danger"
+                                                @click="Excluir(fornecedor.Id)">Excluir</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -132,6 +133,6 @@
         </div>
     </div>
 </body>
-<script src="../js/emissor.js"></script>
+<script src="../js/fornecedor.js"></script>
 
 </html>

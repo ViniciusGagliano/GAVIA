@@ -64,7 +64,7 @@ const patrocinioVue = new Vue({
         },
         async Excluir(id) {
             Swal.fire({
-                title: 'Deseja excluir esse patrocinio?',
+                title: 'Deseja excluir esse patrocínio?',
                 text: `Essa operação não poderá ser desfeita`,
                 icon: `warning`,
                 showCancelButton: true,
@@ -74,7 +74,7 @@ const patrocinioVue = new Vue({
                     axios.delete(`${urlGlobal}/${id}`, {
                         withCredentials: true
                     }).then(_ => {
-                        Swal.fire('Sucesso', 'Patrocinio excluído com sucesso', 'success');
+                        Swal.fire('Sucesso', 'Patrocínio excluído com sucesso', 'success');
                         this.Carregar();
                     }).catch(error => {
                         Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');

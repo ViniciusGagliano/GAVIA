@@ -1,5 +1,5 @@
-const importacaoSinistroVue = new Vue({
-    el: '#importacaoSinistroVue',
+const importacaoVue = new Vue({
+    el: '#importacaoVue',
     data: {
         seguradora: 0,
         tipoArquivo: 1,

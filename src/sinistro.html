@@ -1,128 +1,197 @@
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!DOCTYPE html>
+<html>
 
-<style>
-    [v-cloak] {
-        display: none;
-    }
-</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div id="acompanhamentoSinistroVue" v-cloak>
-    <div class="col-md-12">
-        <!--Datas-->
-        <div class="row">
-            <div class="col-md-2">
-                <label for="dtInicial">Data inicial</label>
-                <input type="date" id="dtInicial" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="dtFinal">Data final</label>
-                <input type="date" id="dtFinal" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="ddlData">Tipo de data</label>
-                <select id="ddlData" class="form-control">
-                    <option value="1">Emissão</option>
-                    <option value="2">Envio seguradora</option>
-                    <option value="3">Previsão de pagamento</option>
-                    <option value="4">Pagamento</option>
-                    <!--ND Sancor-->
-                    <option value="5">Remessa banco</option>
-                    <option value="6">Email WTA</option>
-                    <!--Reembolso-->
-                    <option value="7">Ref Relacão</option>
-                    <option value="8">Prazo para pagamento</option>
-                    <option value="9">Ocorrencia</option>
-                    <option value="10">Recebimento</option>
-                </select>
-            </div>
+    <title>Sinistro</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- Loading Overlay -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
+
+    <!-- Axios JS -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper row">
+        <!-- Menu lateral -->
+        <div class="col-md-2" style="margin-right: 0%;">
+            <nav id="sidebar" class="bg-dark col-md-12">
+                <div class="sidebar-header pt-2" style="text-align: center;">
+                    <h3 style="color: #fafafa;">Menu</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li><a href="importacao.html">Importação</a></li>
+                    <li>
+                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Acompanhamento</a>
+                        <ul class="collapse list-unstyled" id="acompanhamento">
+                            <li><a href="seguradora.html">Seguradora</a></li>
+                            <li><a href="representante.html">Representante</a></li>
+                            <li><a href="patrocinio.html">Patrocinio</a></li>
+                            <li><a href="emissor.html">Emissor</a></li>
+                            <li class="active"><a href="sinistro.html">Sinistros</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Financeiro</a>
+                        <ul class="collapse list-unstyled" id="financeiro">
+                            <li><a href="fechamento.html">Fechamento</a></li>
+                            <li><a href="categoria.html">Categoria</a></li>
+                            <li><a href="centroCusto.html">Centro de Custo</a></li>
+                            <li><a href="cliente.html">Cliente</a></li>
+                            <li><a href="contaBancaria.html">Conta Bancária</a></li>
+                            <li><a href="fornecedor.html">Fornecedor</a></li>
+                            <li><a href="lancamento.html">Lançamento</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <!--Correspondente-->
-        <div class="row">
-            <div class="col-md-2">
-                <label for="txtReferencia">Número de referencia</label>
-                <input type="text" id="txtReferencia" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="ddlCompanhia">Companhia</label>
-                <select id="ddlCompanhia" class="form-control"></select>
-            </div>
-            <div class="col-md-2">
-                <label for="ddlRepresentante">Representante</label>
-                <select id="ddlCompanhia" class="form-control"></select>
-            </div>
-            <div class="col-md-2">
-                <label for="ddlSeguradora">Seguradora</label>
-                <select id="ddlSeguradora" class="form-control"></select>
-            </div>
-            <div class="col-md-2">
-                <label for="ddlCobertura">Cobertura reclamada</label>
-                <input type="text" id="ddlCobertura" class="form-control">
-            </div>
-        </div>
-        <!--Segurado-->
-        <div class="row">
-            <div class="col-md-2">
-                <label for="txtSegurado">Nome do segurado</label>
-                <input type="text" id="txtSegurado" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="txtBeneficiario">Nome do beneficiário</label>
-                <input type="text" id="txtBeneficiario" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="txtBilhete">Número de bilhete</label>
-                <input type="text" id="txtBilhete" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="txtVoucher">Número de voucher</label>
-                <input type="text" id="txtVoucher" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="ddlBanco">Nome do banco</label>
-                <select id="ddlBanco" class="form-control"></select>
-            </div>
-            <div class="col-md-2">
-                <label for="txtAgencia">Número de agência</label>
-                <input type="text" id="txtAgencia" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="txtDigitoAgencia">Digito da agência</label>
-                <input type="text" id="txtDigitoAgencia" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="txtConta">Número de conta</label>
-                <input type="text" id="txtConta" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="txtDigitoConta">Digito da conta</label>
-                <input type="text" id="txtDigitoConta" class="form-control">
-            </div>
-        </div>
-        <!--Valores-->
-        <div class="row">
-            <div class="col-md-2">
-                <label for="txtDolar">Valor em US$</label>
-                <input type="text" id="txtDolar" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <label for="txtReal">Valor em R$</label>
-                <input type="text" id="txtReal" class="form-control">
-            </div>
-        </div>
-        <!---->
-        <div class="row">
-            <div class="col-md-2 pt-3">
-                <button class="btn btn-primary">Buscar</button>
+        <!-- Miolo -->
+        <div id="sinistroVue" v-cloak>
+            <div class="col-md-12">
+                <!--Datas-->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="dtInicial">Data inicial</label>
+                        <input type="date" id="dtInicial" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="dtFinal">Data final</label>
+                        <input type="date" id="dtFinal" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="ddlData">Tipo de data</label>
+                        <select id="ddlData" class="form-control">
+                            <option value="1">Emissão</option>
+                            <option value="2">Envio seguradora</option>
+                            <option value="3">Previsão de pagamento</option>
+                            <option value="4">Pagamento</option>
+                            <!--ND Sancor-->
+                            <option value="5">Remessa banco</option>
+                            <option value="6">Email WTA</option>
+                            <!--Reembolso-->
+                            <option value="7">Ref Relacão</option>
+                            <option value="8">Prazo para pagamento</option>
+                            <option value="9">Ocorrencia</option>
+                            <option value="10">Recebimento</option>
+                        </select>
+                    </div>
+                </div>
+                <!--Correspondente-->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="txtReferencia">Número de referencia</label>
+                        <input type="text" id="txtReferencia" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="ddlCompanhia">Companhia</label>
+                        <select id="ddlCompanhia" class="form-control"></select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="ddlRepresentante">Representante</label>
+                        <select id="ddlCompanhia" class="form-control"></select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="ddlSeguradora">Seguradora</label>
+                        <select id="ddlSeguradora" class="form-control"></select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="ddlCobertura">Cobertura reclamada</label>
+                        <input type="text" id="ddlCobertura" class="form-control">
+                    </div>
+                </div>
+                <!--Segurado-->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="txtSegurado">Nome do segurado</label>
+                        <input type="text" id="txtSegurado" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtBeneficiario">Nome do beneficiário</label>
+                        <input type="text" id="txtBeneficiario" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtBilhete">Número de bilhete</label>
+                        <input type="text" id="txtBilhete" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtVoucher">Número de voucher</label>
+                        <input type="text" id="txtVoucher" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="ddlBanco">Nome do banco</label>
+                        <select id="ddlBanco" class="form-control"></select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtAgencia">Número de agência</label>
+                        <input type="text" id="txtAgencia" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtDigitoAgencia">Digito da agência</label>
+                        <input type="text" id="txtDigitoAgencia" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtConta">Número de conta</label>
+                        <input type="text" id="txtConta" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtDigitoConta">Digito da conta</label>
+                        <input type="text" id="txtDigitoConta" class="form-control">
+                    </div>
+                </div>
+                <!--Valores-->
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="txtDolar">Valor em US$</label>
+                        <input type="text" id="txtDolar" class="form-control">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtReal">Valor em R$</label>
+                        <input type="text" id="txtReal" class="form-control">
+                    </div>
+                </div>
+                <!---->
+                <div class="row">
+                    <div class="col-md-2 pt-3">
+                        <button class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
+</body>
 <script src="../js/sinistro.js"></script>
+
+</html>
