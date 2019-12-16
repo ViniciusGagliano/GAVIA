@@ -11,8 +11,8 @@ namespace Service
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            EnableCorsAttribute cors = new EnableCorsAttribute("file:///C:/inetpub/wwwroot/github/GAVIA/src/*", "*", "*");
-            config.EnableCors(cors);
+            //EnableCorsAttribute cors = new EnableCorsAttribute("file:///C:/inetpub/wwwroot/github/GAVIA/*", "*", "*");
+            //config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
