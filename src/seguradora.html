@@ -55,36 +55,36 @@
                         <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle">Acompanhamento</a>
                         <ul class="collapse list-unstyled" id="acompanhamento">
-                            <li class="active"><a href="seguradora.html">Seguradora</a></li>
-                            <li><a href="representante.html">Representante</a></li>
-                            <li><a href="patrocinio.html">Patrocinio</a></li>
-                            <li><a href="emissor.html">Emissor</a></li>
-                            <li><a href="sinistro.html">Sinistros</a></li>
+                            <li class="active" style="padding-left: 1em;"><a href="seguradora.html">Seguradora</a></li>
+                            <li style="padding-left: 1em;"><a href="representante.html">Representante</a></li>
+                            <li style="padding-left: 1em;"><a href="patrocinio.html">Patrocinio</a></li>
+                            <li style="padding-left: 1em;"><a href="emissor.html">Emissor</a></li>
+                            <li style="padding-left: 1em;"><a href="sinistro.html">Sinistros</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#financeiro" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle">Financeiro</a>
                         <ul class="collapse list-unstyled" id="financeiro">
-                            <li><a href="fechamento.html">Fechamento</a></li>
-                            <li><a href="categoria.html">Categoria</a></li>
-                            <li><a href="centroCusto.html">Centro de Custo</a></li>
-                            <li><a href="cliente.html">Cliente</a></li>
-                            <li><a href="contaBancaria.html">Conta Bancária</a></li>
-                            <li><a href="fornecedor.html">Fornecedor</a></li>
-                            <li><a href="lancamento.html">Lançamento</a></li>
+                            <li style="padding-left: 1em;"><a href="fechamento.html">Fechamento</a></li>
+                            <li style="padding-left: 1em;"><a href="categoria.html">Categoria</a></li>
+                            <li style="padding-left: 1em;"><a href="centroCusto.html">Centro de Custo</a></li>
+                            <li style="padding-left: 1em;"><a href="cliente.html">Cliente</a></li>
+                            <li style="padding-left: 1em;"><a href="contaBancaria.html">Conta Bancária</a></li>
+                            <li style="padding-left: 1em;"><a href="fornecedor.html">Fornecedor</a></li>
+                            <li style="padding-left: 1em;"><a href="lancamento.html">Lançamento</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
         <!-- Miolo -->
-        <div class="col-md-10 pl-4" id="seguradoraVue" v-cloak>
-            <div class="row pl-4">
-                <div class="col-sm-5 pr-1">
+        <div class="col-md-10 px-5" id="seguradoraVue" v-cloak>
+            <div class="row">
+                <div class="col-sm-5">
                     <div class="card">
                         <div class="card-header">
-                            Cadastrar seguradora
+                            Cadastrar Seguradora
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -94,16 +94,20 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>CNPJ</label>
-                                    <input type="text" class="form-control" v-model="cnpj">
+                                    <input type="text" class="form-control" v-model="cnpj" id="cnpj"
+                                        @keypress="ApenasNumeros($event)">
                                 </div>
                             </div>
                             <div class="row pt-3">
-                                <div class="col-sm-3 pr-0">
-                                    <button class="btn btn-primary" @click="ValidarDados()">
+                                <div class="col-sm-5 pr-0">
+                                    <button :class="`btn ${(!id) ? 'btn-primary' : 'btn-outline-primary'}`"
+                                        @click="ValidarDados()">
                                         {{(!id) ? `Cadastrar` : `Editar`}}
                                     </button>
+                                    <button class="btn btn-outline-danger" @click="LimparCampos()"
+                                        v-show="!!id">Limpar</button>
                                 </div>
-                                <div class="col-sm-6 pl-3">
+                                <div class="col-sm-7 pl-3">
                                     <input type="checkbox" v-model="antecipacao" v-model="antecipacao">
                                     <label style="padding-top: 8px; padding-left: 3px;">
                                         Controla antecipacão?
@@ -113,9 +117,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-7 pl-1">
-                    <div class="card pr-2">
-                        <div class="card-header">Buscar seguradora</div>
+                <div class="col-sm-7">
+                    <div class="card">
+                        <div class="card-header">Buscar Seguradora</div>
                         <div class="card-body">
                             <table class="table table-bordered table-hover table-striped table-sm">
                                 <thead class="thead-dark">
@@ -130,11 +134,11 @@
                                     <tr v-for="seguradora in arraySeguradora">
                                         <td>{{seguradora.Nome}}</td>
                                         <td>{{seguradora.CNPJ}}</td>
-                                        <td>{{seguradora.Antecipacao}}</td>
-                                        <td>
-                                            <button class="btn btn-primary"
+                                        <td>{{(seguradora.Antecipacao) ? `Controla` : `Não controla`}}</td>
+                                        <td style="text-align: center;">
+                                            <button class="btn btn-primary btn-sm"
                                                 @click="PreencherCampos(seguradora.Id)">Editar</button>
-                                            <button class="btn btn-danger"
+                                            <button class="btn btn-danger btn-sm"
                                                 @click="Excluir(seguradora.Id)">Excluir</button>
                                         </td>
                                     </tr>
@@ -147,6 +151,7 @@
         </div>
     </div>
 </body>
+<script src="../js/jquery.mask.min.js"></script>
 <script src="../js/seguradora.js"></script>
 
 </html>
