@@ -43,7 +43,7 @@ namespace Repository
                 OpenConnection();
                 using (var cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "UP_REPRESENTA_BUSCAR";
+                    cmd.CommandText = "UP_REPRESENTANTE_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     dr = cmd.ExecuteReader();
                     List<RepresentanteEntity> representantes = new List<RepresentanteEntity>();
@@ -56,7 +56,7 @@ namespace Repository
                                 Id = Convert.ToInt32(dr["ID"]),
                                 Nome = Convert.ToString(dr["NOME"]),
                                 CNPJ = Convert.ToString(dr["CNPJ"]),
-                                Ativo = Convert.ToBoolean(dr["BIT_ATIVO"]),
+                                Ativo = Convert.ToBoolean(dr["ATIVO"]),
                                 DataCriacao = Convert.ToDateTime(dr["DATA_CRIACAO"])
                             });
                         }
@@ -81,7 +81,7 @@ namespace Repository
                 OpenConnection();
                 using (var cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "UP_REPRESENTA_BUSCAR";
+                    cmd.CommandText = "UP_REPRESENTANTE_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = Convert.ToInt32(id);
                     dr = cmd.ExecuteReader();

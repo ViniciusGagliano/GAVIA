@@ -1,8 +1,6 @@
 const urlGlobal = `https://localhost:44318/basico/seguradoras`;
 
-$(document).ready(() => {
-    $('#cnpj').mask('00.000.000/0000-00', { reverse: true });
-})
+$(document).ready(() => { $('#cnpj').mask('00.000.000/0000-00', { reverse: true }); });
 
 const seguradoraVue = new Vue({
     el: '#seguradoraVue',

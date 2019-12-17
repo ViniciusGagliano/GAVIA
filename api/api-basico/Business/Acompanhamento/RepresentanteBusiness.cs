@@ -33,29 +33,24 @@ namespace Business
             }
         }
         
-        public List<RepresentanteEntity> GetAll()
+        public Dictionary<string, List<RepresentanteEntity>> GetAll()
         {
             try
             {
-                return repository.GetAll();
+                List<RepresentanteEntity> representantes = repository.GetAll();
+                return new Dictionary<string, List<RepresentanteEntity>>()
+                {
+                    {"ativos", representantes.Where(r => r.Ativo == true).ToList() },
+                    {"inativos", representantes.Where(r => r.Ativo == false).ToList() }
+                };
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message.ToString());
             }
         }
-        
-        public RepresentanteEntity GetById(int id)
-        {
-            try
-            {
-                return repository.GetById(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message.ToString());
-            }
-        }
+
+        public RepresentanteEntity GetById(int id) => repository.GetById(id);
         
         public void Update(RepresentanteEntity representante)
         {
@@ -73,16 +68,6 @@ namespace Business
             }
         }
 
-        public void Delete(int id)
-        {
-            try
-            {
-                repository.Delete(id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message.ToString());
-            }
-        }
+        public void Delete(int id) => repository.Delete(id);
     }
 }
