@@ -19,7 +19,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_FORNECEDOR_CADASTRAR";
+                    cmd.CommandText = "fin.UP_FORNECEDOR_CADASTRAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = fornecedor.Nome;
                     cmd.Parameters.Add(new SqlParameter("@CNPJ", SqlDbType.VarChar, 14)).Value = fornecedor.CNPJ;
@@ -43,7 +43,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_FORNECEDOR_BUSCAR";
+                    cmd.CommandText = "fin.UP_FORNECEDOR_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     dr = cmd.ExecuteReader();
                     List<FornecedorEntity> fornecedors = new List<FornecedorEntity>();
@@ -80,7 +80,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_FORNECEDOR_BUSCAR";
+                    cmd.CommandText = "fin.UP_FORNECEDOR_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     dr = cmd.ExecuteReader();
@@ -118,7 +118,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_FORNECEDOR_ATUALIZAR";
+                    cmd.CommandText = "fin.UP_FORNECEDOR_ATUALIZAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = fornecedor.Id;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = fornecedor.Nome;
@@ -143,7 +143,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_FORNECEDOR_DELETAR";
+                    cmd.CommandText = "fin.UP_FORNECEDOR_DELETAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     cmd.ExecuteNonQuery();

@@ -1,4 +1,4 @@
-const urlGlobal = `https://localhost:44318/basico/categorias`;
+const urlGlobal = `https://localhost:44318/basico`;
 
 const categoriaVue = new Vue({
     el: '#categoriaVue',
@@ -39,7 +39,7 @@ const categoriaVue = new Vue({
         async Cadastrar() {
             $.LoadingOverlay('show');
 
-            await axios.post(`${urlGlobal}`, {
+            await axios.post(`${urlGlobal}//categorias`, {
                 Nome: this.nome,
                 TipoLancamentoId: this.tipoLancamento
             }).then(_ => {
@@ -54,7 +54,7 @@ const categoriaVue = new Vue({
         async Editar() {
             $.LoadingOverlay('show');
 
-            await axios.put(`${urlGlobal}/${this.id}`, {
+            await axios.put(`${urlGlobal}/categorias/${this.id}`, {
                 Nome: this.nome,
                 TipoLancamentoId: this.tipoLancamento
             }).then(_ => {
@@ -77,7 +77,7 @@ const categoriaVue = new Vue({
                 if (result.value) {
                     $.LoadingOverlay('show');
 
-                    axios.delete(`${urlGlobal}/${id}`).then(_ => {
+                    axios.delete(`${urlGlobal}/categorias/${id}`).then(_ => {
                         Swal.fire('Sucesso', 'Categoria excluída com sucesso', 'success');
                         this.Carregar();
                         this.LimparCampos();
@@ -89,7 +89,7 @@ const categoriaVue = new Vue({
             })
         },
         async CarregarTipoLancamento() {
-            await axios.get(`https://localhost:44318/basico/tiposlancamentos`).then(response => {
+            await axios.get(`${urlGlobal}tiposlancamentos`).then(response => {
                 const tiposlancamentos = response.data;
                 if (tiposlancamentos.length) {
                     ddlTipoLancamento = document.getElementById('ddlTipoLancamento');
@@ -108,7 +108,7 @@ const categoriaVue = new Vue({
             });
         },
         async Carregar() {
-            await axios.get(`${urlGlobal}`).then(response => {
+            await axios.get(`${urlGlobal}/categorias`).then(response => {
                 this.arrayCategoria = response.data['ativos'];
             }).catch(error => {
                 console.log(error);

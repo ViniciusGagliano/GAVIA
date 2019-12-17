@@ -71,7 +71,7 @@ namespace Service.Controllers
                 {
                     Id = id,
                     Nome = model.Nome,
-                    Seguradora = new SeguradoraEntity() { Id = model.Id }
+                    Seguradora = new SeguradoraEntity() { Id = model.SeguradoraId }
                 });
 
                 return Request.CreateResponse(HttpStatusCode.OK);

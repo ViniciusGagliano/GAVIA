@@ -19,7 +19,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CONTA_BANCARIA_CADASTRAR";
+                    cmd.CommandText = "fin.UP_CONTA_BANCARIA_CADASTRAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = contaBancaria.Nome;
                     cmd.Parameters.Add(new SqlParameter("@BANCO", SqlDbType.VarChar, 100)).Value = contaBancaria.Banco;
@@ -48,7 +48,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CONTA_BANCARIA_BUSCAR";
+                    cmd.CommandText = "fin.UP_CONTA_BANCARIA_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     dr = cmd.ExecuteReader();
                     List<ContaBancariaEntity> contasBancarias = new List<ContaBancariaEntity>();
@@ -90,7 +90,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CONTA_BANCARIA_BUSCAR";
+                    cmd.CommandText = "fin.UP_CONTA_BANCARIA_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     dr = cmd.ExecuteReader();
@@ -130,7 +130,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CONTA_BANCARIA_ATUALIZAR";
+                    cmd.CommandText = "fin.UP_CONTA_BANCARIA_ATUALIZAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = contaBancaria.Id;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = contaBancaria.Nome;
@@ -160,7 +160,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CONTA_BANCARIA_DELETAR";
+                    cmd.CommandText = "fin.UP_CONTA_BANCARIA_DELETAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     cmd.ExecuteNonQuery();

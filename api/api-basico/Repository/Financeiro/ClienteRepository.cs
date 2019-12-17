@@ -19,10 +19,10 @@ namespace Repository
                 OpenConnection();
                 using (var cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CLIENTE_CADASTRAR";
+                    cmd.CommandText = "fin.UP_CLIENTE_CADASTRAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar)).Value = cliente.Nome;
-                    cmd.Parameters.Add(new SqlParameter("@SEGURADORA_ID", SqlDbType.Int)).Value = (cliente.Seguradora == null) ? cliente.Seguradora.Id : Convert.DBNull;
+                    cmd.Parameters.Add(new SqlParameter("@SEGURADORA_ID", SqlDbType.Int)).Value = (cliente.Seguradora != null) ? cliente.Seguradora.Id : Convert.DBNull;
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -43,7 +43,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CLIENTE_BUSCAR";
+                    cmd.CommandText = "fin.UP_CLIENTE_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     dr = cmd.ExecuteReader();
                     List<ClienteEntity> clientes = new List<ClienteEntity>();
@@ -56,7 +56,7 @@ namespace Repository
                                 Id = Convert.ToInt32(dr["ID"]),
                                 Nome = Convert.ToString(dr["NOME"]),
                                 Ativo = Convert.ToBoolean(dr["ATIVO"]),
-                                Seguradora = new SeguradoraEntity()
+                                Seguradora = (Convert.IsDBNull(dr["SEGURADORA_ID"])) ? null : new SeguradoraEntity()
                                 {
                                     Id = Convert.ToInt32(dr["SEGURADORA_ID"]),
                                     Nome = Convert.ToString(dr["SEGURADORA_NOME"]),
@@ -85,7 +85,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CLIENTE_BUSCAR";
+                    cmd.CommandText = "fin.UP_CLIENTE_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     dr = cmd.ExecuteReader();
@@ -99,7 +99,7 @@ namespace Repository
                                 Id = Convert.ToInt32(dr["ID"]),
                                 Nome = Convert.ToString(dr["NOME"]),
                                 Ativo = Convert.ToBoolean(dr["ATIVO"]),
-                                Seguradora = new SeguradoraEntity()
+                                Seguradora = (Convert.IsDBNull(dr["SEGURADORA_ID"])) ? null : new SeguradoraEntity()
                                 {
                                     Id = Convert.ToInt32(dr["SEGURADORA_ID"]),
                                     Nome = Convert.ToString(dr["SEGURADORA_NOME"]),
@@ -128,10 +128,10 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CLIENTE_ATUALIZAR";
+                    cmd.CommandText = "fin.UP_CLIENTE_ATUALIZAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = cliente.Id;
-                    cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarBinary, 100)).Value = cliente.Nome;
+                    cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = cliente.Nome;
                     cmd.Parameters.Add(new SqlParameter("@SEGURADORA_ID", SqlDbType.Int)).Value = cliente.Seguradora.Id;
                     cmd.ExecuteNonQuery();
                 }
@@ -153,7 +153,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CLIENTE_DELETAR";
+                    cmd.CommandText = "fin.UP_CLIENTE_DELETAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     cmd.ExecuteNonQuery();
