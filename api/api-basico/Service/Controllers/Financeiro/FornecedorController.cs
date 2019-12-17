@@ -14,7 +14,7 @@ namespace Service.Controllers
     public class FornecedorController : ApiController
     {
         [HttpPost]
-        [Route("forncedores")]
+        [Route("fornecedores")]
         public HttpResponseMessage Insert(FornecedorModel model)
         {
             try
@@ -33,7 +33,7 @@ namespace Service.Controllers
         }
 
         [HttpGet]
-        [Route("forncedores")]
+        [Route("fornecedores")]
         public HttpResponseMessage GetAll()
         {
             try
@@ -47,7 +47,7 @@ namespace Service.Controllers
         }
 
         [HttpGet]
-        [Route("forncedores/{id}")]
+        [Route("fornecedores/{id}")]
         public HttpResponseMessage GetById(int id)
         {
             try
@@ -61,7 +61,7 @@ namespace Service.Controllers
         }
 
         [HttpPut]
-        [Route("forncedores/{id}")]
+        [Route("fornecedores/{id}")]
         public HttpResponseMessage Update(int id, FornecedorModel model)
         {
             try
@@ -81,7 +81,7 @@ namespace Service.Controllers
         }
 
         [HttpDelete]
-        [Route("forncedores/{id}")]
+        [Route("fornecedores/{id}")]
         public HttpResponseMessage Delete(int id)
         {
             try
