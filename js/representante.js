@@ -94,11 +94,6 @@ const representanteVue = new Vue({
         },
         async Carregar() {
             await axios.get(`${urlGlobal}`).then(response => {
-                if (!response.data) {
-                    Swal.fire('Nenhum resultado encontrado', '', 'warning');
-                    return false;
-                }
-
                 this.arrayRepresentante = response.data['ativos'];
             }).catch(error => {
                 console.log(error);

@@ -1,3 +1,7 @@
+a, a:hover, a:focus {
+    transition: all 0.3s;
+}
+
 .wrapper {
     display: flex;
     align-items: stretch;

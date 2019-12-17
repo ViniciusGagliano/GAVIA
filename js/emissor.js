@@ -77,11 +77,6 @@ const emissorVue = new Vue({
         },
         Carregar() {
             axios.get(`${urlGlobal}`).then(response => {
-                if (!response.data) {
-                    Swal.fire('Nenhum resultado encontrado', '', 'warning');
-                    return false;
-                }
-
                 this.arrayEmissor = response.data['ativos'];
             }).catch(error => {
                 console.log(error);

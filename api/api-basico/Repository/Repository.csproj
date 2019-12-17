@@ -52,6 +52,7 @@
     <Compile Include="Acompanhamento\EmissorRepository.cs" />
     <Compile Include="Financeiro\FornecedorRepository.cs" />
     <Compile Include="Financeiro\LancamentoRepository.cs" />
+    <Compile Include="Financeiro\TipoLancamentoRepository.cs" />
     <Compile Include="Importacao\ImportacaoRepository.cs" />
     <Compile Include="Acompanhamento\NotaDebitoRepository.cs" />
     <Compile Include="Acompanhamento\PatrocinioRepository.cs" />

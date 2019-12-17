@@ -112,6 +112,7 @@
     <Compile Include="Controllers\Acompanhamento\EmissorController.cs" />
     <Compile Include="Controllers\Financeiro\FornecedorController.cs" />
     <Compile Include="Controllers\Financeiro\LancamentoController.cs" />
+    <Compile Include="Controllers\Financeiro\TipoLancamentoController.cs" />
     <Compile Include="Controllers\Importacao\ImportacaoController.cs" />
     <Compile Include="Controllers\Acompanhamento\NotaDebitoController.cs" />
     <Compile Include="Controllers\Acompanhamento\PatrocinioController.cs" />

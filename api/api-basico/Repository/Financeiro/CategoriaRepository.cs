@@ -19,7 +19,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CATEGORIA_CADASTRAR";
+                    cmd.CommandText = "fin.UP_CATEGORIA_CADASTRAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = categoria.Nome;
                     cmd.Parameters.Add(new SqlParameter("@TIPO_LANCAMENTO_ID", SqlDbType.Int)).Value = categoria.TipoLancamento.Id;
@@ -43,7 +43,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CATEGORIA_BUSCAR";
+                    cmd.CommandText = "fin.UP_CATEGORIA_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     dr = cmd.ExecuteReader();
                     List<CategoriaEntity> categorias = new List<CategoriaEntity>();
@@ -60,7 +60,7 @@ namespace Repository
                                 {
                                     Id = Convert.ToInt32(dr["TIPO_LANCAMENTO_ID"]),
                                     Nome = Convert.ToString(dr["TIPO_LANCAMENTO_NOME"]),
-                                    Multiplicador = Convert.ToInt32(dr["TIPO_LANCAMENTO_MULTIPLICADOR"])
+                                    Multiplicador = Convert.ToInt32(dr["MULTIPLICADOR"])
                                 }
                             });
                         }
@@ -85,7 +85,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CATEGORIA_BUSCAR";
+                    cmd.CommandText = "fin.UP_CATEGORIA_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     dr = cmd.ExecuteReader();
@@ -103,7 +103,7 @@ namespace Repository
                                 {
                                     Id = Convert.ToInt32(dr["TIPO_LANCAMENTO_ID"]),
                                     Nome = Convert.ToString(dr["TIPO_LANCAMENTO_NOME"]),
-                                    Multiplicador = Convert.ToInt32(dr["TIPO_LANCAMENTO_MULTIPLICADOR"])
+                                    Multiplicador = Convert.ToInt32(dr["MULTIPLICADOR"])
                                 }
                             };
                         }
@@ -128,7 +128,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CATEGORIA_ATUALIZAR";
+                    cmd.CommandText = "fin.UP_CATEGORIA_ATUALIZAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = categoria.Id;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = categoria.Nome;
@@ -153,7 +153,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CATEGORIA_DELETE";
+                    cmd.CommandText = "fin.UP_CATEGORIA_DELETAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     cmd.ExecuteNonQuery();

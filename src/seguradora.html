@@ -40,39 +40,94 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body>
+<body style="overflow: hidden;">
     <div class="wrapper row">
         <!-- Menu lateral -->
         <div class="col-md-2" style="margin-right: 0%;">
-            <nav id="sidebar" class="bg-dark col-md-12">
+            <nav id="sidebar" class="bg-dark pr-0 pl-2">
                 <div class="sidebar-header pt-2" style="text-align: center;">
                     <h3 style="color: #fafafa;">Menu</h3>
                 </div>
 
                 <ul class="list-unstyled components">
-                    <li><a href="importacao.html">Importação</a></li>
                     <li>
-                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Acompanhamento</a>
+                        <a href="importacao.html" style="color: #fafafa;">
+                            Importação
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Acompanhamento
+                        </a>
                         <ul class="collapse list-unstyled" id="acompanhamento">
-                            <li class="active" style="padding-left: 1em;"><a href="seguradora.html">Seguradora</a></li>
-                            <li style="padding-left: 1em;"><a href="representante.html">Representante</a></li>
-                            <li style="padding-left: 1em;"><a href="patrocinio.html">Patrocinio</a></li>
-                            <li style="padding-left: 1em;"><a href="emissor.html">Emissor</a></li>
-                            <li style="padding-left: 1em;"><a href="sinistro.html">Sinistros</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="seguradora.html" style="color: #fafafa;">
+                                    Seguradora
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="representante.html" style="color: #fafafa;">
+                                    Representante
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="patrocinio.html" style="color: #fafafa;">
+                                    Patrocinio
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="emissor.html" style="color: #fafafa;">
+                                    Emissor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="sinistro.html" style="color: #fafafa;">
+                                    Sinistros
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Financeiro</a>
+                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Financeiro
+                        </a>
                         <ul class="collapse list-unstyled" id="financeiro">
-                            <li style="padding-left: 1em;"><a href="fechamento.html">Fechamento</a></li>
-                            <li style="padding-left: 1em;"><a href="categoria.html">Categoria</a></li>
-                            <li style="padding-left: 1em;"><a href="centroCusto.html">Centro de Custo</a></li>
-                            <li style="padding-left: 1em;"><a href="cliente.html">Cliente</a></li>
-                            <li style="padding-left: 1em;"><a href="contaBancaria.html">Conta Bancária</a></li>
-                            <li style="padding-left: 1em;"><a href="fornecedor.html">Fornecedor</a></li>
-                            <li style="padding-left: 1em;"><a href="lancamento.html">Lançamento</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="fechamento.html" style="color: #fafafa;">
+                                    Fechamento
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="categoria.html" style="color: #fafafa;">
+                                    Categoria
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="centroCusto.html" style="color: #fafafa;">
+                                    Centro de Custo
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="cliente.html" style="color: #fafafa;">
+                                    Cliente
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="contaBancaria.html" style="color: #fafafa;">
+                                    Conta Bancária
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="fornecedor.html" style="color: #fafafa;">
+                                    Fornecedor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;"><a href="lancamento.html" style="color: #fafafa;">
+                                    Lançamento
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -136,7 +191,8 @@
                                         <td>{{seguradora.CNPJ}}</td>
                                         <td>{{(seguradora.Antecipacao) ? `Controla` : `Não controla`}}</td>
                                         <td style="text-align: center;">
-                                            <button class="btn btn-primary btn-sm"
+                                            <button
+                                                :class="`btn btn-outline-primary btn-sm ${(id === seguradora.Id) ? 'active' : ''}`"
                                                 @click="PreencherCampos(seguradora.Id)">Editar</button>
                                             <button class="btn btn-danger btn-sm"
                                                 @click="Excluir(seguradora.Id)">Excluir</button>
