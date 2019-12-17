@@ -53,7 +53,7 @@ namespace Repository
                         {
                             patrocinios.Add(new PatrocinioEntity()
                             {
-                                Id = Convert.ToInt32(dr["PATROCINIO_ID"]),
+                                Id = Convert.ToInt32(dr["ID"]),
                                 Seguradora = new SeguradoraEntity()
                                 {
                                     Id = Convert.ToInt32(dr["SEGURADORA_ID"]),
@@ -100,7 +100,7 @@ namespace Repository
                         {
                             patrocinio = new PatrocinioEntity()
                             {
-                                Id = Convert.ToInt32(dr["PATROCINIO_ID"]),
+                                Id = Convert.ToInt32(dr["ID"]),
                                 Seguradora = new SeguradoraEntity()
                                 {
                                     Id = Convert.ToInt32(dr["SEGURADORA_ID"]),
@@ -164,7 +164,7 @@ namespace Repository
                     cmd.CommandText = "UP_PATROCINIO_DELETAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = Convert.ToInt32(id);
-                    cmd.BeginExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)

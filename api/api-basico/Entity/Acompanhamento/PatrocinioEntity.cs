@@ -8,7 +8,7 @@ namespace Entity
 {
     public class PatrocinioEntity
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public SeguradoraEntity Seguradora { get; set; }
         public RepresentanteEntity Representante { get; set; }
     }

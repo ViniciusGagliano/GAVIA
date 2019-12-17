@@ -99,7 +99,7 @@ namespace Service.Controllers
         {
             return new PatrocinioEntity()
             {
-                Seguradora = new SeguradoraEntity() { Id = model.Id },
+                Seguradora = new SeguradoraEntity() { Id = model.SeguradoraId },
                 Representante = new RepresentanteEntity() { Id = model.RepresentanteId }
             };
         }

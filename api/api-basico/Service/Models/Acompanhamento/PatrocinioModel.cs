@@ -7,8 +7,8 @@ namespace Service.Models
 {
     public class PatrocinioModel
     {
-        public int? Id { get; set; }
-        public int? SeguradoraId { get; set; }
-        public int? RepresentanteId { get; set; }
+        public int Id { get; set; }
+        public int SeguradoraId { get; set; }
+        public int RepresentanteId { get; set; }
     }
 }

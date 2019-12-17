@@ -20,8 +20,8 @@ const fornecedorVue = new Vue({
     mounted() { $.LoadingOverlay('hide'); },
     methods: {
         ValidarDados() {
-            if (!this.nome) {
-                Swal.fire('Atenção', `O campo nome é obrigatório`, 'warning');
+            if (!this.nome || !this.cnpj) {
+                Swal.fire('Atenção', `O campo nome e CNPJ são obrigatórios`, 'warning');
                 return false;
             }
 
