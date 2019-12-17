@@ -1,8 +1,4 @@
 const urlGlobal = `https://localhost:44318/basico/emissores`;
-const axiosSettings = {
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded', "Access-Control-Allow-Origin": true, },
-    withCredentials: false,
-};
 
 const emissorVue = new Vue({
     el: '#emissorVue',
@@ -27,44 +23,33 @@ const emissorVue = new Vue({
 
             (this.id) ? this.Editar() : this.Cadastrar();
         },
+        LimparCampos() {
+            this.id = 0;
+            this.nome = ``;
+        },
         PreencherCampos(id) {
             this.id = id;
-            let emissor = this.arrayEmissor.filter(s => s.Id === id);
+            let emissor = this.arrayEmissor.filter(s => s.Id === id)[0];
             this.nome = emissor.Nome;
         },
         async Cadastrar() {
             $.LoadingOverlay('show');
 
-            axios.post(`${urlGlobal}`, `Nome=${this.nome}`, axiosSettings).then(_ => {
+            axios.post(`${urlGlobal}`, { Nome: this.nome }).then(_ => {
                 Swal.fire('Sucesso', 'Cadastro realizado com sucesso', 'success');
                 this.Carregar();
+                this.LimparCampos();
             }).catch(error => {
                 Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
                 console.log(error);
             }).finally(_ => $.LoadingOverlay('hide'));
-
-            // await $.ajax({
-            //     type: 'POST',
-            //     crossDomain: true,
-            //     url: `${urlGlobal}`,
-            //     data: {
-            //         Nome: this.nome
-            //     }
-            // }).done(_ => {
-            //     Swal.fire('Sucesso', 'Cadastro realizado com sucesso', 'success');
-            //     this.Carregar();
-            // }).error(error => {
-            //     Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
-            //     console.log(error);
-            // }).always(_ => $.LoadingOverlay('hide'));
         },
         async Editar() {
             $.LoadingOverlay('show');
-            await axios.put(`${urlGlobal}/${this.id}`, {
-                Nome: this.nome
-            }, axiosSettings).then(_ => {
+            await axios.put(`${urlGlobal}/${this.id}`, { Nome: this.nome }).then(_ => {
                 Swal.fire('Sucesso', 'Dados alterado com sucesso', 'success');
                 this.Carregar();
+                this.LimparCampos();
             }).catch(error => {
                 Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
                 console.log(error);
@@ -76,12 +61,11 @@ const emissorVue = new Vue({
                 text: `Essa operação não poderá ser desfeita`,
                 icon: `warning`,
                 showCancelButton: true,
+                cancelButtonColor: '#d33'
             }).then(result => {
                 if (result.value) {
                     $.LoadingOverlay('show');
-                    axios.delete(`${urlGlobal}/${id}`, {
-                        withCredentials: true
-                    }).then(_ => {
+                    axios.delete(`${urlGlobal}/${id}`).then(_ => {
                         Swal.fire('Sucesso', 'Emissor excluído com sucesso', 'success');
                         this.Carregar();
                     }).catch(error => {
@@ -92,7 +76,7 @@ const emissorVue = new Vue({
             })
         },
         Carregar() {
-            axios.get(`${urlGlobal}`, axiosSettings).then(response => {
+            axios.get(`${urlGlobal}`).then(response => {
                 if (!response.data) {
                     Swal.fire('Nenhum resultado encontrado', '', 'warning');
                     return false;
@@ -102,15 +86,6 @@ const emissorVue = new Vue({
             }).catch(error => {
                 console.log(error);
             });
-            // $.ajax({
-            //     type: 'GET',
-            //     crossDomain: true,
-            //     url: `${urlGlobal}`
-            // }).done(response => {
-            //     console.log(response);
-            // }).error(error => {
-            //     console.log(error);
-            // });
         },
     },
 });
