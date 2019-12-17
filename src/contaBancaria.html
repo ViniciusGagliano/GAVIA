@@ -40,99 +40,191 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body>
+<body style="overflow: hidden;">
     <div class="wrapper row">
         <!-- Menu lateral -->
         <div class="col-md-2" style="margin-right: 0%;">
-            <nav id="sidebar" class="bg-dark col-md-12">
+            <nav id="sidebar" class="bg-dark pr-0 pl-2">
                 <div class="sidebar-header pt-2" style="text-align: center;">
                     <h3 style="color: #fafafa;">Menu</h3>
                 </div>
 
                 <ul class="list-unstyled components">
-                    <li><a href="importacao.html">Importação</a></li>
                     <li>
-                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Acompanhamento</a>
+                        <a href="importacao.html" style="color: #fafafa;">
+                            Importação
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Acompanhamento
+                        </a>
                         <ul class="collapse list-unstyled" id="acompanhamento">
-                            <li><a href="seguradora.html">Seguradora</a></li>
-                            <li><a href="representante.html">Representante</a></li>
-                            <li><a href="patrocinio.html">Patrocinio</a></li>
-                            <li><a href="emissor.html">Emissor</a></li>
-                            <li><a href="sinistro.html">Sinistros</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="seguradora.html" style="color: #fafafa;">
+                                    Seguradora
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="representante.html" style="color: #fafafa;">
+                                    Representante
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="patrocinio.html" style="color: #fafafa;">
+                                    Patrocinio
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="emissor.html" style="color: #fafafa;">
+                                    Emissor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="sinistro.html" style="color: #fafafa;">
+                                    Sinistros
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Financeiro</a>
+                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Financeiro
+                        </a>
                         <ul class="collapse list-unstyled" id="financeiro">
-                            <li><a href="fechamento.html">Fechamento</a></li>
-                            <li><a href="categoria.html">Categoria</a></li>
-                            <li><a href="centroCusto.html">Centro de Custo</a></li>
-                            <li><a href="cliente.html">Cliente</a></li>
-                            <li class="active"><a href="contaBancaria.html">Conta Bancária</a></li>
-                            <li><a href="fornecedor.html">Fornecedor</a></li>
-                            <li><a href="lancamento.html">Lançamento</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="fechamento.html" style="color: #fafafa;">
+                                    Fechamento
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="categoria.html" style="color: #fafafa;">
+                                    Categoria
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="centroCusto.html" style="color: #fafafa;">
+                                    Centro de Custo
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="cliente.html" style="color: #fafafa;">
+                                    Cliente
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="contaBancaria.html" style="color: #fafafa;">
+                                    Conta Bancária
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="fornecedor.html" style="color: #fafafa;">
+                                    Fornecedor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;"><a href="lancamento.html" style="color: #fafafa;">
+                                    Lançamento
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
         <!-- Miolo -->
-        <div class="col-md-10 pl-4" id="contaBancariaVue" v-cloak>
-            <div class="row pl-4">
-                <div class="col-sm-5 pr-1">
-                    <div class="card">
-                        <div class="card-header">
-                            Cadastrar Conta Bancária
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Nome</label>
-                                    <input type="text" class="form-control" v-model="nome">
-                                </div>
+        <div class="col-md-10 px-5" id="contaBancariaVue" v-cloak>
+            <div class="row">
+                <div class="card">
+                    <div class="card-header">
+                        Cadastrar Conta Bancária
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Nome</label>
+                                <input type="text" class="form-control" v-model="nome">
                             </div>
-                            <div class="row pt-3">
-                                <div class="col-sm-3 pr-0">
-                                    <button class="btn btn-primary" @click="ValidarDados()">
-                                        {{(!id) ? `Cadastrar` : `Editar`}}
-                                    </button>
-                                </div>
+                            <div class="col-md-3">
+                                <label>Banco</label>
+                                <input type="text" class="form-control" v-model="banco">
+                            </div>
+                            <div class="col-md-3">
+                                <label>Saldo</label>
+                                <input type="text" class="form-control" id="saldo" v-model="saldo"
+                                    @keypress="ApenasNumeros($event)">
+                            </div>
+                            <div class="col-md-4 pt-3">
+                                <label>Agência</label>
+                                <input type="text" class="form-control" v-model="agencia" maxlength="4">
+                            </div>
+                            <div class="col-md-2 pt-3">
+                                <label>Digito Agência</label>
+                                <input type="text" class="form-control" v-model="digitoAgencia" maxlength="1">
+                            </div>
+                            <div class="col-md-4 pt-3">
+                                <label>Conta</label>
+                                <input type="text" class="form-control" v-model="conta" maxlength="10">
+                            </div>
+                            <div class="col-md-2 pt-3">
+                                <label>Digito Conta</label>
+                                <input type="text" class="form-control" v-model="digitoConta" maxlength="1">
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col-sm-3 pr-0">
+                                <button :class="`btn ${(!id) ? 'btn-primary' : 'btn-outline-primary'}`"
+                                    @click="ValidarDados()">
+                                    {{(!id) ? `Cadastrar` : `Editar`}}
+                                </button>
+                                <button class="btn btn-outline-danger" v-show="id"
+                                    @click="LimparCampos()">Limpar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-7 pl-1">
-                    <div class="card pr-2">
-                        <div class="card-header">Buscar Conta Bancária</div>
-                        <div class="card-body">
-                            <table class="table table-bordered table-hover table-striped table-sm">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th class="text-center">Nome</th>
-                                        <th class="text-center">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="contaBancaria in arrayContaBancaria">
-                                        <td>{{contaBancaria.Nome}}</td>
-                                        <td>
-                                            <button class="btn btn-primary"
-                                                @click="PreencherCampos(contaBancaria.Id)">Editar</button>
-                                            <button class="btn btn-danger"
-                                                @click="Excluir(contaBancaria.Id)">Excluir</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+            </div>
+            <div class="row pt-3">
+                <div class="card col-md-12">
+                    <div class="card-header">Buscar Conta Bancária</div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover table-striped table-sm">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">Nome</th>
+                                    <th class="text-center">Banco</th>
+                                    <th class="text-center">Agência</th>
+                                    <th class="text-center">Conta</th>
+                                    <th class="text-center">Saldo</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="contaBancaria in arrayContaBancaria">
+                                    <td>{{contaBancaria.Nome}}</td>
+                                    <td>{{contaBancaria.Banco}}</td>
+                                    <td>{{contaBancaria.Agencia}}-{{contaBancaria.DigitoAgencia}}</td>
+                                    <td>{{contaBancaria.Conta}}-{{contaBancaria.DigitoConta}}</td>
+                                    <td>{{parseFloat(contaBancaria.Saldo).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <button
+                                            :class="`btn btn-outline-primary btn-sm ${(id === contaBancaria.Id) ? 'active' : ''}`"
+                                            @click="PreencherCampos(contaBancaria.Id)">Editar</button>
+                                        <button class="btn btn-danger btn-sm"
+                                            @click="Excluir(contaBancaria.Id)">Excluir</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="../js/jquery.mask.min.js"></script>
 <script src="../js/contaBancaria.js"></script>
 
 </html>
