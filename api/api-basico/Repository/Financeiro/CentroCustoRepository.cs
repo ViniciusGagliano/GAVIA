@@ -19,7 +19,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CENTRO_CUSTO_CADASTRAR";
+                    cmd.CommandText = "fin.UP_CENTRO_CUSTO_CADASTRAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = centroCusto.Nome;
                     cmd.ExecuteNonQuery();
@@ -42,7 +42,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CENTRO_CUSTO_BUSCAR";
+                    cmd.CommandText = "fin.UP_CENTRO_CUSTO_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     dr = cmd.ExecuteReader();
                     List<CentroCustoEntity> centroCustos = new List<CentroCustoEntity>();
@@ -78,7 +78,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CENTRO_CUSTO_BUSCAR";
+                    cmd.CommandText = "fin.UP_CENTRO_CUSTO_BUSCAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     dr = cmd.ExecuteReader();
@@ -115,7 +115,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CENTRO_CUSTO_ATUALIZAR";
+                    cmd.CommandText = "fin.UP_CENTRO_CUSTO_ATUALIZAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = centroCusto.Id;
                     cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar, 100)).Value = centroCusto.Nome;
@@ -139,7 +139,7 @@ namespace Repository
                 OpenConnection();
                 using (cmd = new SqlCommand("", con))
                 {
-                    cmd.CommandText = "cap.UP_CENTRO_CUSTO_DELETAR";
+                    cmd.CommandText = "fin.UP_CENTRO_CUSTO_DELETAR";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
                     cmd.ExecuteNonQuery();
