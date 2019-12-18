@@ -31,6 +31,10 @@ namespace Entity.Importacao
         public decimal ValorDolar { get; set; }
         public decimal ValorReal { get; set; }
         public double Dolar { get; set; }
+        public string NotaDebito { get; set; }
+        public DateTime DataEmissaoND { get; set; }
+        public DateTime DataEnvio { get; set; }
+        public string StatusPagamento { get; set; }
         public int SinistroId { get; set; }
     }
 }

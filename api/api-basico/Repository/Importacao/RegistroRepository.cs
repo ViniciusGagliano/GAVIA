@@ -31,19 +31,22 @@ namespace Repository.Importacao
 					cmd.Parameters.Add(new SqlParameter("@REFERENCIA", SqlDbType.VarChar)).Value = registro.Referencia;
 					cmd.Parameters.Add(new SqlParameter("@DATA_ATENDIMENTO", SqlDbType.SmallDateTime)).Value = registro.DataAtendimento;
 					cmd.Parameters.Add(new SqlParameter("@DATA_OCORRENCIA", SqlDbType.SmallDateTime)).Value = registro.DataOcorrencia;
-					cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar)).Value = registro.Nome;
-					cmd.Parameters.Add(new SqlParameter("@NUMERO_DOCUMENTO", SqlDbType.VarChar)).Value = registro.NumeroDocumento;
+					cmd.Parameters.Add(new SqlParameter("@NOME_SEGURADO", SqlDbType.VarChar)).Value = registro.Nome;
+					cmd.Parameters.Add(new SqlParameter("@DOCUMENTO", SqlDbType.VarChar)).Value = registro.NumeroDocumento;
 					cmd.Parameters.Add(new SqlParameter("@VOUCHER", SqlDbType.VarChar)).Value = registro.Voucher;
-					cmd.Parameters.Add(new SqlParameter("@COBERTURA", SqlDbType.VarChar)).Value = registro.Cobertura;
+					cmd.Parameters.Add(new SqlParameter("@COBERTURA_RECLAMADA", SqlDbType.VarChar)).Value = registro.Cobertura;
 					cmd.Parameters.Add(new SqlParameter("@CUSTO_ORIGINAL", SqlDbType.Money)).Value = registro.CustoOriginal;
 					cmd.Parameters.Add(new SqlParameter("@TIPO_MOEDA", SqlDbType.VarChar)).Value = registro.TipoMoeda;
 					cmd.Parameters.Add(new SqlParameter("@VALOR_FINAL", SqlDbType.Money)).Value = registro.ValorFinal;
 					cmd.Parameters.Add(new SqlParameter("@FEE", SqlDbType.Money)).Value = registro.Fee;
 					cmd.Parameters.Add(new SqlParameter("@TIPO_MOEDA_FEE", SqlDbType.VarChar)).Value = registro.TipoMoedaFee;
-					cmd.Parameters.Add(new SqlParameter("@VALOR_DOLAR", SqlDbType.Money)).Value = registro.ValorDolar;
-					cmd.Parameters.Add(new SqlParameter("@VALOR_REAL", SqlDbType.Money)).Value = registro.ValorReal;
-					cmd.Parameters.Add(new SqlParameter("@DOLAR", SqlDbType.Float)).Value = registro.Dolar;
-					cmd.Parameters.Add(new SqlParameter("@SINISTRO_ID", SqlDbType.Int)).Value = registro.SinistroId;
+					cmd.Parameters.Add(new SqlParameter("@VALOR_ND_US", SqlDbType.Money)).Value = registro.ValorDolar;
+					cmd.Parameters.Add(new SqlParameter("@VALOR_ND_RS", SqlDbType.Money)).Value = registro.ValorReal;
+					cmd.Parameters.Add(new SqlParameter("@TAXA_CAMBIO", SqlDbType.Float)).Value = registro.Dolar;
+					cmd.Parameters.Add(new SqlParameter("@NOTA_DEBITO", SqlDbType.VarChar, 20)).Value = registro.NotaDebito;
+					cmd.Parameters.Add(new SqlParameter("@DATA_EMISSAO_ND", SqlDbType.SmallDateTime)).Value = registro.DataEmissaoND;
+					cmd.Parameters.Add(new SqlParameter("@DATA_ENVIO", SqlDbType.SmallDateTime)).Value = registro.DataEnvio;
+					cmd.Parameters.Add(new SqlParameter("@STATUS_PAGAMENTO", SqlDbType.VarChar, 20)).Value = registro.StatusPagamento;
 					cmd.ExecuteNonQuery();
 				}
 			}
@@ -181,26 +184,6 @@ namespace Repository.Importacao
 					cmd.CommandType = CommandType.StoredProcedure;
 					cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = registro.Id;
 					cmd.Parameters.Add(new SqlParameter("@IMPORTACAO_ID", SqlDbType.Int)).Value = registro.Importacao.Id;
-					cmd.Parameters.Add(new SqlParameter("@NUMERO_SINISTRO", SqlDbType.VarChar)).Value = registro.NumeroSinistro;
-					cmd.Parameters.Add(new SqlParameter("@COMPANHIA", SqlDbType.VarChar)).Value = registro.Companhia;
-					cmd.Parameters.Add(new SqlParameter("@PROCESSO", SqlDbType.VarChar)).Value = registro.Processo;
-					cmd.Parameters.Add(new SqlParameter("@BILHETE", SqlDbType.VarChar)).Value = registro.Bilhete;
-					cmd.Parameters.Add(new SqlParameter("@DATA_EMISSAO_VOUCHER", SqlDbType.SmallDateTime)).Value = registro.DataEmissaoVoucher;
-					cmd.Parameters.Add(new SqlParameter("@REFERENCIA", SqlDbType.VarChar)).Value = registro.Referencia;
-					cmd.Parameters.Add(new SqlParameter("@DATA_ATENDIMENTO", SqlDbType.SmallDateTime)).Value = registro.DataAtendimento;
-					cmd.Parameters.Add(new SqlParameter("@DATA_OCORRENCIA", SqlDbType.SmallDateTime)).Value = registro.DataOcorrencia;
-					cmd.Parameters.Add(new SqlParameter("@NOME", SqlDbType.VarChar)).Value = registro.Nome;
-					cmd.Parameters.Add(new SqlParameter("@NUMERO_DOCUMENTO", SqlDbType.VarChar)).Value = registro.NumeroDocumento;
-					cmd.Parameters.Add(new SqlParameter("@VOUCHER", SqlDbType.VarChar)).Value = registro.Voucher;
-					cmd.Parameters.Add(new SqlParameter("@COBERTURA", SqlDbType.VarChar)).Value = registro.Cobertura;
-					cmd.Parameters.Add(new SqlParameter("@CUSTO_ORIGINAL", SqlDbType.Money)).Value = registro.CustoOriginal;
-					cmd.Parameters.Add(new SqlParameter("@TIPO_MOEDA", SqlDbType.VarChar)).Value = registro.TipoMoeda;
-					cmd.Parameters.Add(new SqlParameter("@VALOR_FINAL", SqlDbType.Money)).Value = registro.ValorFinal;
-					cmd.Parameters.Add(new SqlParameter("@FEE", SqlDbType.Money)).Value = registro.Fee;
-					cmd.Parameters.Add(new SqlParameter("@TIPO_MOEDA_FEE", SqlDbType.VarChar)).Value = registro.TipoMoedaFee;
-					cmd.Parameters.Add(new SqlParameter("@VALOR_DOLAR", SqlDbType.Money)).Value = registro.ValorDolar;
-					cmd.Parameters.Add(new SqlParameter("@VALOR_REAL", SqlDbType.Money)).Value = registro.ValorReal;
-					cmd.Parameters.Add(new SqlParameter("@DOLAR", SqlDbType.Float)).Value = registro.Dolar;
 					cmd.Parameters.Add(new SqlParameter("@SINISTRO_ID", SqlDbType.Int)).Value = registro.SinistroId;
 					cmd.ExecuteNonQuery();
 				}

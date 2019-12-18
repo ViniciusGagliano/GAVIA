@@ -40,81 +40,136 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <div class="wrapper row">
         <!-- Menu lateral -->
-        <div class="col-md-2" style="margin-right: 0%;">
-            <nav id="sidebar" class="bg-dark col-md-12">
+        <div class="col-md-2 bg-dark" style="margin-right: 0%;">
+            <nav id="sidebar" class="bg-dark pr-0 pl-2">
                 <div class="sidebar-header pt-2" style="text-align: center;">
                     <h3 style="color: #fafafa;">Menu</h3>
                 </div>
 
                 <ul class="list-unstyled components">
-                    <li class="active"><a href="importacao.html">Importação</a></li>
                     <li>
-                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Acompanhamento</a>
+                        <a href="importacao.html" style="color: #fafafa;">
+                            Importação
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Acompanhamento
+                        </a>
                         <ul class="collapse list-unstyled" id="acompanhamento">
-                            <li><a href="seguradora.html">Seguradora</a></li>
-                            <li><a href="representante.html">Representante</a></li>
-                            <li><a href="patrocinio.html">Patrocinio</a></li>
-                            <li><a href="emissor.html">Emissor</a></li>
-                            <li><a href="sinistro.html">Sinistros</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="seguradora.html" style="color: #fafafa;">
+                                    Seguradora
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="representante.html" style="color: #fafafa;">
+                                    Representante
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="patrocinio.html" style="color: #fafafa;">
+                                    Patrocinio
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="emissor.html" style="color: #fafafa;">
+                                    Emissor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="sinistro.html" style="color: #fafafa;">
+                                    Sinistros
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Financeiro</a>
+                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Financeiro
+                        </a>
                         <ul class="collapse list-unstyled" id="financeiro">
-                            <li><a href="fechamento.html">Fechamento</a></li>
-                            <li><a href="categoria.html">Categoria</a></li>
-                            <li><a href="centroCusto.html">Centro de Custo</a></li>
-                            <li><a href="cliente.html">Cliente</a></li>
-                            <li><a href="contaBancaria.html">Conta Bancária</a></li>
-                            <li><a href="fornecedor.html">Fornecedor</a></li>
-                            <li><a href="lancamento.html">Lançamento</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="fechamento.html" style="color: #fafafa;">
+                                    Fechamento
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="categoria.html" style="color: #fafafa;">
+                                    Categoria
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="centroCusto.html" style="color: #fafafa;">
+                                    Centro de Custo
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="cliente.html" style="color: #fafafa;">
+                                    Cliente
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="contaBancaria.html" style="color: #fafafa;">
+                                    Conta Bancária
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="fornecedor.html" style="color: #fafafa;">
+                                    Fornecedor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;"><a href="lancamento.html" style="color: #fafafa;">
+                                    Lançamento
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
         <!-- Miolo -->
-        <div id="importacaoVue" class="col-sm-10 pl-4" v-cloak>
-            <div class="row ml-1 pb-3">
-                <div class="col-md-12">
-                    <h4>Importação</h4>
-                </div>
-            </div>
-            <div class="row ml-1 pb-3">
+        <div id="importacaoVue" class="col-sm-10" v-cloak>
+            <div class="row py-3">
                 <div class="col-md-3">
                     <button type="button" class="btn btn-primary" @click="OpenModal();" data-toggle="modal"
                         data-target="#modalImportacao">Importar Arquivo</button>
                 </div>
             </div>
-            <div class="row ml-1">
+            <div class="row">
                 <div class="col-md-11">
-                    <div class="alert alert-danger mr-1" v-if="!arrayImportacao.length">
-                        Nenhuma importação ativa
-                    </div>
-                    <table class="table table-striped table-bordered table-hover table-sm" v-else>
+                    <table class="table table-striped table-bordered table-hover table-sm">
                         <thead class="thead-dark">
                             <tr>
                                 <th class="text-center">Seguradora</th>
                                 <th class="text-center">Arquivo</th>
-                                <th class="text-center">Data da importação</th>
-                                <th class="text-center">Usuário</th>
+                                <th class="text-center">Data da Importação</th>
                                 <th class="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="importacao of arrayImportacao">
-                                <td>{{importacao.seguradora}}</td>
-                                <td>{{importacao.arquivo}}</td>
-                                <td>{{importacao.data}}</td>
-                                <td>{{importacao.usuario}}</td>
+                                <td>{{importacao.Seguradora.Nome}}</td>
+                                <td>{{importacao.NomeArquivo}}</td>
+                                <td>{{importacao.DataImportacaoFormatada}}</td>
                                 <td class="text-center">
-                                    <button class="btn btn-success">Processar</button>
-                                    <button class="btn btn-danger">Excluir</button>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-info btn-sm" v-if="importacao.Processada"
+                                            @click="Visualizar(importacao.Id)">
+                                            Visualizar
+                                        </button>
+                                        <button class="btn btn-success btn-sm" v-else @click="Processar(importacao.Id)">
+                                            Processar
+                                        </button>
+                                        <button class="btn btn-danger btn-sm" @click="Excluir(importacao.Id)">
+                                            Excluir
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -138,9 +193,6 @@
                                     <label for="ddlSeguradora">Seguradora <b style="color: red;">*</b></label>
                                     <select id="ddlSeguradora" class="form-control" v-model="seguradora">
                                         <option value="0">Selecione</option>
-                                        <option value="1">Sancor</option>
-                                        <option value="2">Zuriche</option>
-                                        <option value="3">Sompo</option>
                                     </select>
                                 </div>
                                 <div class="col-md-2" v-if="seguradora == 1">
@@ -151,14 +203,17 @@
                                     </select>
                                 </div>
                                 <div class="col-md-5">
-                                    <label for="arqSeguradora">Arquivo</label>
+                                    <label>Arquivo</label>
                                     <input type="file" id="arqSeguradora" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" @click="ValidarCampos();">Importar</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-primary"
+                                    @click="ValidarCampos();">Importar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -14,5 +14,7 @@ namespace Entity
         public bool Antecipacao { get; set; }
         public bool Ativo { get; set; }
         public SeguradoraEntity Seguradora { get; set; }
+        public string DataImportacaoFormatada { get; set; }
+        public bool Processada { get; set; }
     }
 }

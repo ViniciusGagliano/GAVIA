@@ -65,7 +65,9 @@ namespace Repository
 									Id = Convert.ToInt32(dr["SEGURADORA_ID"]),
 									Nome = dr["SEGURADORA_NOME"].ToString(),
 									CNPJ = dr["SEGURADORA_CNPJ"].ToString()
-								}
+								},
+								DataImportacaoFormatada = dr["DATA_IMPORTACAO_FORMATADA"].ToString(),
+								Processada = Convert.ToBoolean(dr["BIT_PROCESSADA"])
 							});
 						}
 					}
@@ -110,7 +112,9 @@ namespace Repository
 									Id = Convert.ToInt32(dr["SEGURADORA_ID"]),
 									Nome = dr["SEGURADORA_NOME"].ToString(),
 									CNPJ = dr["SEGURADORA_CNPJ"].ToString()
-								}
+								},
+								DataImportacaoFormatada = dr["DATA_IMPORTACAO_FORMATADA"].ToString(),
+								Processada = Convert.ToBoolean(dr["BIT_PROCESSADA"])
 							};
 						}
 					}
@@ -140,6 +144,7 @@ namespace Repository
 					cmd.Parameters.Add(new SqlParameter("@NOME_ARQUIVO", SqlDbType.VarChar, 300)).Value = importacao.NomeArquivo;
 					cmd.Parameters.Add(new SqlParameter("@CAMINHO_ARQUIVO", SqlDbType.VarChar)).Value = importacao.CaminhoArquivo;
 					cmd.Parameters.Add(new SqlParameter("@ANTECIPACAO", SqlDbType.Bit)).Value = importacao.Antecipacao;
+					cmd.Parameters.Add(new SqlParameter("@PROCESSAR", SqlDbType.Bit)).Value = importacao.Processada;
 					cmd.Parameters.Add(new SqlParameter("@SEGURADORA_ID", SqlDbType.Int)).Value = importacao.Seguradora.Id;
 					cmd.ExecuteNonQuery();
 				}

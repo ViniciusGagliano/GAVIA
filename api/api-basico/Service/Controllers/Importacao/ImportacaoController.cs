@@ -138,5 +138,20 @@ namespace Service.Controllers
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("processar/{id}")]
+        public HttpResponseMessage Processar(int id)
+        {
+            try
+            {
+                new ImportacaoBusiness().Processar(id);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }
