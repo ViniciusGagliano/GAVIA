@@ -66,7 +66,7 @@ const importacaoVue = new Vue({
             }).always(_ => $.LoadingOverlay('hide'));
         },
         Visualizar(id) {
-            window.open(`sinistro.html?id=${id}`, '_self')
+            window.open(`sinistro.html?importacaoId=${id}`, '_self')
         },
         Processar(id) {
             axios.get(`${urlGlobal}/processar/${id}`).then(_ => {

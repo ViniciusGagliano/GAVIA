@@ -66,7 +66,7 @@ namespace Business
 
                 foreach (DataRow row in table.Rows)
                 {
-                    RegistroEntity registro = new RegistroEntity
+                    new RegistroBusiness().Insert(new RegistroEntity
                     {
                         Importacao = importacao,
                         NumeroSinistro = row["Número Sinistro Zurich"].ToString(),
@@ -93,9 +93,7 @@ namespace Business
                         DataEmissaoND = Convert.ToDateTime(row["Data de Emissão ND"]),
                         DataEnvio = Convert.ToDateTime(row["Data de envio"]),
                         StatusPagamento = row["Status de Pgto PARCIAL/TOTAL"].ToString()
-                    };
-
-                    new RegistroBusiness().Insert(registro);
+                    });
                 }
             }
             catch (Exception ex)

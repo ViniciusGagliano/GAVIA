@@ -40,59 +40,114 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <div class="wrapper row">
         <!-- Menu lateral -->
-        <div class="col-md-2" style="margin-right: 0%; padding: 0%;">
-            <nav id="sidebar" class="bg-dark col-md-12">
+        <div class="col-md-2 bg-dark" style="margin-right: 0%;">
+            <nav id="sidebar" class="bg-dark pr-0 pl-2">
                 <div class="sidebar-header pt-2" style="text-align: center;">
                     <h3 style="color: #fafafa;">Menu</h3>
                 </div>
 
                 <ul class="list-unstyled components">
-                    <li><a href="importacao.html">Importação</a></li>
                     <li>
-                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Acompanhamento</a>
+                        <a href="importacao.html" style="color: #fafafa;">
+                            Importação
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Acompanhamento
+                        </a>
                         <ul class="collapse list-unstyled" id="acompanhamento">
-                            <li><a href="seguradora.html">Seguradora</a></li>
-                            <li><a href="representante.html">Representante</a></li>
-                            <li><a href="patrocinio.html">Patrocinio</a></li>
-                            <li><a href="emissor.html">Emissor</a></li>
-                            <li class="active"><a href="sinistro.html">Sinistros</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="seguradora.html" style="color: #fafafa;">
+                                    Seguradora
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="representante.html" style="color: #fafafa;">
+                                    Representante
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="patrocinio.html" style="color: #fafafa;">
+                                    Patrocinio
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="emissor.html" style="color: #fafafa;">
+                                    Emissor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="sinistro.html" style="color: #fafafa;">
+                                    Sinistros
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Financeiro</a>
+                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Financeiro
+                        </a>
                         <ul class="collapse list-unstyled" id="financeiro">
-                            <li><a href="fechamento.html">Fechamento</a></li>
-                            <li><a href="categoria.html">Categoria</a></li>
-                            <li><a href="centroCusto.html">Centro de Custo</a></li>
-                            <li><a href="cliente.html">Cliente</a></li>
-                            <li><a href="contaBancaria.html">Conta Bancária</a></li>
-                            <li><a href="fornecedor.html">Fornecedor</a></li>
-                            <li><a href="lancamento.html">Lançamento</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="fechamento.html" style="color: #fafafa;">
+                                    Fechamento
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="categoria.html" style="color: #fafafa;">
+                                    Categoria
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="centroCusto.html" style="color: #fafafa;">
+                                    Centro de Custo
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="cliente.html" style="color: #fafafa;">
+                                    Cliente
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="contaBancaria.html" style="color: #fafafa;">
+                                    Conta Bancária
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="fornecedor.html" style="color: #fafafa;">
+                                    Fornecedor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;"><a href="lancamento.html" style="color: #fafafa;">
+                                    Lançamento
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
         <!-- Miolo -->
-        <div id="sinistroVue" class="col-md-10 pl-4" v-cloak>
+        <div id="sinistroVue" class="col-sm-10" v-cloak>
             <!--Datas-->
             <div class="row">
-                <div class="col-md-2">
-                    <label for="dtInicial">Data inicial</label>
-                    <input type="date" id="dtInicial" class="form-control">
+                <div class="col-sm-3">
+                    <label>Data inicial</label>
+                    <input type="date" class="form-control" v-model="form.dtInicial">
                 </div>
-                <div class="col-md-2">
-                    <label for="dtFinal">Data final</label>
-                    <input type="date" id="dtFinal" class="form-control">
+                <div class="col-sm-3">
+                    <label>Data final</label>
+                    <input type="date" class="form-control" v-model="form.dtFinal">
                 </div>
-                <div class="col-md-3">
-                    <label for="ddlData">Tipo de data</label>
-                    <select id="ddlData" class="form-control">
+                <div class="col-sm-2">
+                    <label>Tipo de data</label>
+                    <select class="form-control" v-model="form.tipoData">
                         <option value="1">Emissão</option>
                         <option value="2">Envio seguradora</option>
                         <option value="3">Previsão de pagamento</option>
@@ -108,77 +163,72 @@
                     </select>
                 </div>
             </div>
-            <!--Correspondente-->
+            <!--Clientes-->
             <div class="row">
-                <div class="col-md-2">
-                    <label for="txtReferencia">Número de referencia</label>
-                    <input type="text" id="txtReferencia" class="form-control">
+                <div class="col-md-3">
+                    <label>Representante</label>
+                    <select id="ddlRepresentante" class="form-control" v-model="form.representante">
+                        <option value="0">Selecione</option>
+                    </select>
                 </div>
                 <div class="col-md-3">
-                    <label for="ddlRepresentante">Representante</label>
-                    <select id="ddlCompanhia" class="form-control"></select>
-                </div>
-                <div class="col-md-3">
-                    <label for="ddlSeguradora">Seguradora</label>
-                    <select id="ddlSeguradora" class="form-control"></select>
+                    <label>Seguradora</label>
+                    <select id="ddlSeguradora" class="form-control" v-model="form.seguradora">
+                        <option value="0">Selecione</option>
+                    </select>
                 </div>
                 <div class="col-md-2">
-                    <label for="ddlCobertura">Cobertura reclamada</label>
-                    <input type="text" id="ddlCobertura" class="form-control">
+                    <label>Importação</label>
+                    <input type="text" class="form-control" v-model="form.importacao">
                 </div>
             </div>
             <!--Segurado-->
             <div class="row">
                 <div class="col-md-2">
-                    <label for="txtSegurado">Nome do segurado</label>
-                    <input type="text" id="txtSegurado" class="form-control">
+                    <label>Nome do segurado</label>
+                    <input type="text" class="form-control" v-model="form.segurado">
                 </div>
                 <div class="col-md-2">
-                    <label for="txtBeneficiario">Nome do beneficiário</label>
-                    <input type="text" id="txtBeneficiario" class="form-control">
+                    <label>Nome do beneficiário</label>
+                    <input type="text" class="form-control" v-model="form.beneficiario">
                 </div>
-                <div class="col-md-2">
-                    <label for="txtBilhete">Número de bilhete</label>
-                    <input type="text" id="txtBilhete" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <label for="txtVoucher">Número de voucher</label>
-                    <input type="text" id="txtVoucher" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <label for="ddlBanco">Nome do banco</label>
-                    <select id="ddlBanco" class="form-control"></select>
-                </div>
-                <div class="col-md-2">
-                    <label for="txtAgencia">Número de agência</label>
-                    <input type="text" id="txtAgencia" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <label for="txtDigitoAgencia">Digito da agência</label>
-                    <input type="text" id="txtDigitoAgencia" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <label for="txtConta">Número de conta</label>
-                    <input type="text" id="txtConta" class="form-control">
-                </div>
-                <div class="col-md-2">
-                    <label for="txtDigitoConta">Digito da conta</label>
-                    <input type="text" id="txtDigitoConta" class="form-control">
+                <div class="col-md-4">
+                    <label>Cobertura reclamada</label>
+                    <input type="text" class="form-control" v-model="form.cobertura">
                 </div>
                 <!--Valores-->
-                <div class="col-md-2">
-                    <label for="txtDolar">Valor em US$</label>
-                    <input type="text" id="txtDolar" class="form-control">
+                <!-- <div class="col-md-2">
+                    <label>Valor em US$</label>
+                    <input type="text" class="form-control" v-model="form.dolar">
                 </div>
                 <div class="col-md-2">
-                    <label for="txtReal">Valor em R$</label>
-                    <input type="text" id="txtReal" class="form-control">
+                    <label>Valor em R$</label>
+                    <input type="text" class="form-control" v-model="form.real">
+                </div> -->
+            </div>
+            <!--Números-->
+            <div class="row">
+                <div class="col-md-2">
+                    <label>Número de referência</label>
+                    <input type="text" class="form-control" v-model="form.referencia">
                 </div>
-                <!---->
+                <div class="col-md-2">
+                    <label>Número de bilhete</label>
+                    <input type="text" class="form-control" v-model="form.bilhete">
+                </div>
+                <div class="col-md-2">
+                    <label>Número de voucher</label>
+                    <input type="text" class="form-control" v-model="form.voucher">
+                </div>
+                <div class="col-md-2">
+                    <label>Nota de débito</label>
+                    <input type="text" class="form-control" v-model="form.notaDebito">
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-2 pt-3">
-                    <button class="btn btn-primary">Buscar</button>
+                    <button class="btn btn-primary" @click="Carregar()">Buscar</button>
+                    <button class="btn btn-outline-danger" @click="LimparCampos()">Limpar</button>
                 </div>
             </div>
             <div class="row">
