@@ -32,5 +32,8 @@ namespace Entity.Acompanhamento
         public NotaDebitoEntity NotaDebito { get; set; }
         public PatrocinioEntity Patrocinio { get; set; }
         public TipoSinistroEntity TipoSinistro { get; set; }
+
+        public string Seguradora { get; set; }
+        public string Representante { get; set; }
     }
 }

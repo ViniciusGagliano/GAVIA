@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acompanhamento\FechamentoRepository.cs" />
+    <Compile Include="Acompanhamento\SinistroRepository.cs" />
     <Compile Include="Financeiro\CategoriaRepository.cs" />
     <Compile Include="Financeiro\CentroCustoRepository.cs" />
     <Compile Include="Financeiro\ClienteRepository.cs" />

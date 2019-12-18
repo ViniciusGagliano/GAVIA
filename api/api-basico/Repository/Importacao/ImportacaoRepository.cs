@@ -181,5 +181,28 @@ namespace Repository
 				CloseConnection();
 			}
 		}
+
+		public void Processar(int id)
+		{
+			try
+			{
+				OpenConnection();
+				using (cmd = new SqlCommand("", con))
+				{
+					cmd.CommandText = "imp.UP_IMPORTACAO_PROCESSAR";
+					cmd.CommandType = CommandType.StoredProcedure;
+					cmd.Parameters.Add(new SqlParameter("@ID", SqlDbType.Int)).Value = id;
+					cmd.ExecuteNonQuery();
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+			finally
+			{
+				CloseConnection();
+			}
+		}
     }
 }

@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acompanhamento\FechamentoBusiness.cs" />
+    <Compile Include="Acompanhamento\SinistroBusiness.cs" />
     <Compile Include="Financeiro\CategoriaBusiness.cs" />
     <Compile Include="Financeiro\CentroCustoBusiness.cs" />
     <Compile Include="Financeiro\ClienteBusiness.cs" />

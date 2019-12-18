@@ -44,13 +44,25 @@ const sinistroVue = new Vue({
                 }
             }
         },
-        async Cadastrar() {
+        async Cadastrar(id) {
+            this.id = id;
+            const sinistro = this.arraySinistro.filter(s => s.Id === id)[0];
+            let Descricao = sinistro.NumeroSinistro;
+            let Valor = sinistro.ValorReal;
             $.LoadingOverlay('show');
 
-            await axios.post(`${urlGlobal}/sinistros`, {
-                Nome: this.nome
+            await axios.post(`${urlGlobal}/lancamentos`, {
+                Descricao,
+                CustoFixo: 1,
+                Valor,
+                DataLancamento: '2019-12-18',
+                ClienteId: 2,
+                ContaBancariaId: 2,
+                CentroCustoId: 1,
+                CategoriaId: 1,
+                FornecedorId: 4,
             }).then(_ => {
-                Swal.fire('Sucesso', 'Cadastro realizado com sucesso', 'success');
+                Swal.fire('Sucesso', 'Lançamento realizado com sucesso', 'success');
                 this.Carregar();
                 this.LimparCampos();
             }).catch(error => {
@@ -58,43 +70,43 @@ const sinistroVue = new Vue({
                 console.log(error);
             }).finally(_ => $.LoadingOverlay('hide'));
         },
-        async Editar() {
-            $.LoadingOverlay('show');
-            await axios.put(`${urlGlobal}/sinistros/${this.id}`, {
-                Nome: this.nome
-            }).then(_ => {
-                Swal.fire('Sucesso', 'Dados alterado com sucesso', 'success');
-                this.Carregar();
-                this.LimparCampos();
-            }).catch(error => {
-                Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
-                console.log(error);
-            }).finally(_ => { $.LoadingOverlay('hide') });
-        },
-        async Excluir(id) {
-            Swal.fire({
-                title: 'Deseja excluir esse emissor?',
-                text: `Essa operação não poderá ser desfeita`,
-                icon: `warning`,
-                showCancelButton: true,
-                cancelButtonColor: '#d33'
-            }).then(result => {
-                if (result.value) {
-                    $.LoadingOverlay('show');
+        // async Editar() {
+        //     $.LoadingOverlay('show');
+        //     await axios.put(`${urlGlobal}/sinistros/${this.id}`, {
+        //         Nome: this.nome
+        //     }).then(_ => {
+        //         Swal.fire('Sucesso', 'Dados alterado com sucesso', 'success');
+        //         this.Carregar();
+        //         this.LimparCampos();
+        //     }).catch(error => {
+        //         Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
+        //         console.log(error);
+        //     }).finally(_ => { $.LoadingOverlay('hide') });
+        // },
+        // async Excluir(id) {
+        //     Swal.fire({
+        //         title: 'Deseja excluir esse emissor?',
+        //         text: `Essa operação não poderá ser desfeita`,
+        //         icon: `warning`,
+        //         showCancelButton: true,
+        //         cancelButtonColor: '#d33'
+        //     }).then(result => {
+        //         if (result.value) {
+        //             $.LoadingOverlay('show');
 
-                    axios.delete(`${urlGlobal}/sinistros/${id}`).then(_ => {
-                        Swal.fire('Sucesso', 'Emissor excluído com sucesso', 'success');
-                        this.Carregar();
-                    }).catch(error => {
-                        Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
-                        console.log(error);
-                    }).finally(_ => { $.LoadingOverlay('hide') });
-                }
-            })
-        },
+        //             axios.delete(`${urlGlobal}/sinistros/${id}`).then(_ => {
+        //                 Swal.fire('Sucesso', 'Emissor excluído com sucesso', 'success');
+        //                 this.Carregar();
+        //             }).catch(error => {
+        //                 Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
+        //                 console.log(error);
+        //             }).finally(_ => { $.LoadingOverlay('hide') });
+        //         }
+        //     })
+        // },
         async Carregar() {
-            await axios.get(`${urlGlobal}/sinistros`).then(response => {
-                this.arraySinistro = response.data['ativos'];
+            await axios.get(`${urlGlobal}/impsinistros/${this.form.importacao}`).then(response => {
+                this.arraySinistro = response.data;
             }).catch(error => {
                 console.log(error);
             });

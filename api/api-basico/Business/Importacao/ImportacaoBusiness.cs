@@ -43,10 +43,12 @@ namespace Business
         {
             try
             {
-                ImportacaoEntity importacao = new ImportacaoBusiness().GetById(id);
+                ImportacaoBusiness business = new ImportacaoBusiness();
+                ImportacaoEntity importacao = business.GetById(id);
                 LerExcel(importacao);
+                business.Processar(id);
                 importacao.Processada = true;
-                new ImportacaoBusiness().Update(importacao);
+                business.Update(importacao);
             }
             catch (Exception ex)
             {

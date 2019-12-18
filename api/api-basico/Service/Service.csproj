@@ -105,6 +105,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Acompanhamento\FechamentoController.cs" />
+    <Compile Include="Controllers\Acompanhamento\SinistroController.cs" />
     <Compile Include="Controllers\Financeiro\CategoriaController.cs" />
     <Compile Include="Controllers\Financeiro\CentroCustoController.cs" />
     <Compile Include="Controllers\Financeiro\ClienteController.cs" />
@@ -125,6 +126,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Acompanhamento\FechamentoModel.cs" />
+    <Compile Include="Models\Acompanhamento\SinistroModel.cs" />
     <Compile Include="Models\Financeiro\CategoriaModel.cs" />
     <Compile Include="Models\Financeiro\CentroCustoModel.cs" />
     <Compile Include="Models\Financeiro\ClienteModel.cs" />
