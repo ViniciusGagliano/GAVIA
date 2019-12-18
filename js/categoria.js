@@ -39,7 +39,7 @@ const categoriaVue = new Vue({
         async Cadastrar() {
             $.LoadingOverlay('show');
 
-            await axios.post(`${urlGlobal}//categorias`, {
+            await axios.post(`${urlGlobal}/categorias`, {
                 Nome: this.nome,
                 TipoLancamentoId: this.tipoLancamento
             }).then(_ => {
@@ -89,7 +89,7 @@ const categoriaVue = new Vue({
             })
         },
         async CarregarTipoLancamento() {
-            await axios.get(`${urlGlobal}tiposlancamentos`).then(response => {
+            await axios.get(`${urlGlobal}/tiposlancamentos`).then(response => {
                 const tiposlancamentos = response.data;
                 if (tiposlancamentos.length) {
                     ddlTipoLancamento = document.getElementById('ddlTipoLancamento');

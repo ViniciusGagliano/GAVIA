@@ -40,10 +40,10 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body style="overflow: hidden;">
+<body style="overflow-x: hidden;">
     <div class="wrapper row">
         <!-- Menu lateral -->
-        <div class="col-md-2" style="margin-right: 0%;">
+        <div class="col-md-2 pr-0 bg-dark" style="margin-right: 0%;">
             <nav id="sidebar" class="bg-dark pr-0 pl-2">
                 <div class="sidebar-header pt-2" style="text-align: center;">
                     <h3 style="color: #fafafa;">Menu</h3>
@@ -134,9 +134,9 @@
             </nav>
         </div>
         <!-- Miolo -->
-        <div class="col-md-10 px-5" id="representanteVue" v-cloak>
+        <div class="col-md-10 px-4" id="representanteVue" v-cloak>
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-5 pl-0">
                     <div class="card">
                         <div class="card-header">
                             Cadastrar Representante
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-7 pl-0">
                     <div class="card">
                         <div class="card-header">Buscar Representante</div>
                         <div class="card-body">
@@ -183,11 +183,13 @@
                                         <td>{{representante.Nome}}</td>
                                         <td>{{representante.CNPJ}}</td>
                                         <td style="text-align: center;">
-                                            <button
-                                                :class="`btn btn-outline-primary btn-sm ${(id === representante.Id) ? 'active' : ''}`"
-                                                @click="PreencherCampos(representante.Id)">Editar</button>
-                                            <button class="btn btn-danger btn-sm"
-                                                @click="Excluir(representante.Id)">Excluir</button>
+                                            <div class="btn-group" role="group">
+                                                <button
+                                                    :class="`btn btn-outline-primary btn-sm ${(id === representante.Id) ? 'active' : ''}`"
+                                                    @click="PreencherCampos(representante.Id)">Editar</button>
+                                                <button class="btn btn-danger btn-sm"
+                                                    @click="Excluir(representante.Id)">Excluir</button>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

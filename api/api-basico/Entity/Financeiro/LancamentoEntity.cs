@@ -15,6 +15,7 @@ namespace Entity.Financeiro
         public bool CustoFixo { get; set; }
         public decimal Valor { get; set; }
         public DateTime DataLancamento { get; set; }
+        public string DataLancamentoFormatada { get; set; }
         public FechamentoEntity Fechamento { get; set; }
         public ClienteEntity Cliente { get; set; }
         public ContaBancariaEntity ContaBancaria { get; set; }

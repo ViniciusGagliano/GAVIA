@@ -66,14 +66,35 @@ namespace Repository.Financeiro
 								Ativo = Convert.ToBoolean(dr["ATIVO"]),
 								Descricao = dr["DESCRICAO"].ToString(),
 								DataLancamento = Convert.ToDateTime(dr["DATA_LANCAMENTO"]),
+								DataLancamentoFormatada = dr["DATA_LANCAMENTO_FORMATADA"].ToString(),
 								Valor = Convert.ToDecimal(dr["VALOR"]),
 								CustoFixo = Convert.ToBoolean(dr["CUSTO_FIXO"]),
-								Categoria = new CategoriaEntity() { Id = Convert.ToInt32(dr["CATEGORIA_ID"]) },
-								CentroCusto = new CentroCustoEntity() { Id = Convert.ToInt32(dr["CENTRO_CUSTO_ID"]) },
-								Cliente = new ClienteEntity() { Id = Convert.ToInt32(dr["CLIENTE_ID"]) },
-								ContaBancaria = new ContaBancariaEntity() { Id = Convert.ToInt32(dr["CONTA_BANCARIA_ID"]) },
+								Categoria = new CategoriaEntity()
+								{
+									Id = Convert.ToInt32(dr["CATEGORIA_ID"]),
+									Nome = dr["CATEGORIA_NOME"].ToString()
+								},
+								CentroCusto = new CentroCustoEntity()
+								{
+									Id = Convert.ToInt32(dr["CENTRO_CUSTO_ID"]),
+									Nome = dr["CENTRO_CUSTO_NOME"].ToString()
+								},
+								Cliente = new ClienteEntity()
+								{
+									Id = Convert.ToInt32(dr["CLIENTE_ID"]),
+									Nome = dr["CLIENTE_NOME"].ToString()
+								},
+								ContaBancaria = new ContaBancariaEntity()
+								{
+									Id = Convert.ToInt32(dr["CONTA_BANCARIA_ID"]),
+									Nome = dr["CONTA_BANCARIA_NOME"].ToString()
+								},
 								Fechamento = new Entity.Acompanhamento.FechamentoEntity() { Id = Convert.ToInt32(dr["FECHAMENTO_ID"]) },
-								Fornecedor = new FornecedorEntity() { Id = Convert.ToInt32(dr["FORNECEDOR_ID"]) }
+								Fornecedor = new FornecedorEntity()
+								{
+									Id = Convert.ToInt32(dr["FORNECEDOR_ID"]),
+									Nome = dr["FORNECEDOR_NOME"].ToString()
+								}
 							});
 						}
 					}
@@ -112,14 +133,31 @@ namespace Repository.Financeiro
 								Ativo = Convert.ToBoolean(dr["ATIVO"]),
 								Descricao = dr["DESCRICAO"].ToString(),
 								DataLancamento = Convert.ToDateTime(dr["DATA_LANCAMENTO"]),
+								DataLancamentoFormatada = dr["DATA_LANCAMENTO_FORMATADA"].ToString(),
 								Valor = Convert.ToDecimal(dr["VALOR"]),
 								CustoFixo = Convert.ToBoolean(dr["CUSTO_FIXO"]),
-								Categoria = new CategoriaEntity() { Id = Convert.ToInt32(dr["CATEGORIA_ID"]) },
-								CentroCusto = new CentroCustoEntity() { Id = Convert.ToInt32(dr["CENTRO_CUSTO_ID"]) },
-								Cliente = new ClienteEntity() { Id = Convert.ToInt32(dr["CLIENTE_ID"]) },
-								ContaBancaria = new ContaBancariaEntity() { Id = Convert.ToInt32(dr["CONTA_BANCARIA_ID"]) },
+								Categoria = new CategoriaEntity()
+								{
+									Id = Convert.ToInt32(dr["CATEGORIA_ID"]),
+									Nome = dr["CATEGORIA_NOME"].ToString()
+								},
+								CentroCusto = new CentroCustoEntity() {
+									Id = Convert.ToInt32(dr["CENTRO_CUSTO_ID"]),
+									Nome = dr["CENTRO_CUSTO_NOME"].ToString()
+								},
+								Cliente = new ClienteEntity() {
+									Id = Convert.ToInt32(dr["CLIENTE_ID"]),
+									Nome = dr["CLIENTE_NOME"].ToString()
+								},
+								ContaBancaria = new ContaBancariaEntity() {
+									Id = Convert.ToInt32(dr["CONTA_BANCARIA_ID"]),
+									Nome = dr["CONTA_BANCARIA_NOME"].ToString()
+								},
 								Fechamento = new Entity.Acompanhamento.FechamentoEntity() { Id = Convert.ToInt32(dr["FECHAMENTO_ID"]) },
-								Fornecedor = new FornecedorEntity() { Id = Convert.ToInt32(dr["FORNECEDOR_ID"]) }
+								Fornecedor = new FornecedorEntity() {
+									Id = Convert.ToInt32(dr["FORNECEDOR_ID"]),
+									Nome = dr["FORNECEDOR_NOME"].ToString()
+								}
 							};
 						}
 					}

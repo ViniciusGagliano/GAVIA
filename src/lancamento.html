@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lancamento</title>
+    <title>Lançamento</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -38,101 +38,241 @@
 
     <!-- Axios JS -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.20/datatables.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.20/datatables.min.js"></script> -->
+
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
     <div class="wrapper row">
         <!-- Menu lateral -->
-        <div class="col-md-2" style="margin-right: 0%;">
-            <nav id="sidebar" class="bg-dark col-md-12">
+        <div class="col-md-2 bg-dark" style="margin-right: 0%;">
+            <nav id="sidebar" class="bg-dark pr-0 pl-2">
                 <div class="sidebar-header pt-2" style="text-align: center;">
                     <h3 style="color: #fafafa;">Menu</h3>
                 </div>
 
                 <ul class="list-unstyled components">
-                    <li><a href="importacao.html">Importação</a></li>
                     <li>
-                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Acompanhamento</a>
+                        <a href="importacao.html" style="color: #fafafa;">
+                            Importação
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#acompanhamento" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Acompanhamento
+                        </a>
                         <ul class="collapse list-unstyled" id="acompanhamento">
-                            <li><a href="seguradora.html">Seguradora</a></li>
-                            <li><a href="representante.html">Representante</a></li>
-                            <li><a href="patrocinio.html">Patrocinio</a></li>
-                            <li><a href="emissor.html">Emissor</a></li>
-                            <li><a href="sinistro.html">Sinistros</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="seguradora.html" style="color: #fafafa;">
+                                    Seguradora
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="representante.html" style="color: #fafafa;">
+                                    Representante
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="patrocinio.html" style="color: #fafafa;">
+                                    Patrocinio
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="emissor.html" style="color: #fafafa;">
+                                    Emissor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="sinistro.html" style="color: #fafafa;">
+                                    Sinistros
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Financeiro</a>
+                        <a href="#financeiro" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"
+                            style="color: #fafafa;">
+                            Financeiro
+                        </a>
                         <ul class="collapse list-unstyled" id="financeiro">
-                            <li><a href="fechamento.html">Fechamento</a></li>
-                            <li><a href="categoria.html">Categoria</a></li>
-                            <li><a href="centroCusto.html">Centro de Custo</a></li>
-                            <li><a href="cliente.html">Cliente</a></li>
-                            <li><a href="contaBancaria.html">Conta Bancária</a></li>
-                            <li><a href="fornecedor.html">Fornecedor</a></li>
-                            <li class="active"><a href="lancamento.html">Lançamento</a></li>
+                            <li style="padding-left: 1em;">
+                                <a href="fechamento.html" style="color: #fafafa;">
+                                    Fechamento
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="categoria.html" style="color: #fafafa;">
+                                    Categoria
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="centroCusto.html" style="color: #fafafa;">
+                                    Centro de Custo
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="cliente.html" style="color: #fafafa;">
+                                    Cliente
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="contaBancaria.html" style="color: #fafafa;">
+                                    Conta Bancária
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;">
+                                <a href="fornecedor.html" style="color: #fafafa;">
+                                    Fornecedor
+                                </a>
+                            </li>
+                            <li style="padding-left: 1em;"><a href="lancamento.html" style="color: #fafafa;">
+                                    Lançamento
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
         <!-- Miolo -->
-        <div class="col-md-10 pl-4" id="lancamentoVue" v-cloak>
-            <div class="row pl-4">
-                <div class="col-sm-5 pr-1">
-                    <div class="card">
-                        <div class="card-header">
-                            Cadastrar Lancamento
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Nome</label>
-                                    <input type="text" class="form-control" v-model="nome">
-                                </div>
+        <div class="col-md-10 px-4" id="lancamentoVue" v-cloak>
+            <div class="row">
+                <div class="card col-md-12 pl-0">
+                    <div class="card-header">
+                        Cadastrar Lançamento
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Data Lançamento <b style="color: crimson;">*</b></label>
+                                <input type="date" class="form-control" v-model="dataLancamento">
                             </div>
-                            <div class="row pt-3">
-                                <div class="col-sm-3 pr-0">
-                                    <button class="btn btn-primary" @click="ValidarDados()">
-                                        {{(!id) ? `Cadastrar` : `Editar`}}
-                                    </button>
-                                </div>
+                            <div class="col-md-2">
+                                <label>Valor <b style="color: crimson;">*</b></label>
+                                <input type="text" class="form-control" id="valor" v-model.lazy="valor">
+                            </div>
+                            <div class="col-md-2">
+                                <label>Categoria <b style="color: crimson;">*</b></label>
+                                <select class="form-control" id="ddlCategoria" v-model="categoria">
+                                    <option value="0">Selecione</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Custo <b style="color: crimson;">*</b></label>
+                                <select class="form-control" v-model="custoFixo">
+                                    <option value="0">Variável</option>
+                                    <option value="1">Fixo</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Centro de Custo <b style="color: crimson;">*</b></label>
+                                <select id="ddlCentroCusto" class="form-control" v-model="centroCusto">
+                                    <option value="0">Selecione</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 pt-3">
+                                <label>Cliente <b style="color: crimson;">*</b></label>
+                                <select id="ddlCliente" class="form-control" v-model="cliente">
+                                    <option value="0">Selecione</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 pt-3">
+                                <label>Conta Bancária <b style="color: crimson;">*</b></label>
+                                <select id="ddlContaBancaria" class="form-control" v-model="contaBancaria">
+                                    <option value="0">Selecione</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 pt-3">
+                                <label>Fornecedor <b style="color: crimson;">*</b></label>
+                                <select id="ddlFornecedor" class="form-control" v-model="fornecedor">
+                                    <option value="0">Selecione</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 pt-3">
+                                <label>Descrição</label>
+                                <textarea cols="10" rows="3" class="form-control" v-model="descricao"></textarea>
+                            </div>
+                        </div>
+                        <div class="row pt-3">
+                            <div class="col-sm-6">
+                                <button :class="`btn ${(!id) ? 'btn-primary' : 'btn-outline-primary'}`"
+                                    @click="ValidarDados()">
+                                    {{(!id) ? `Cadastrar` : `Editar`}}
+                                </button>
+                                <button class="btn btn-outline-danger" v-show="id"
+                                    @click="LimparCampos()">Limpar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-7 pl-1">
-                    <div class="card pr-2">
-                        <div class="card-header">Buscar Lancamento</div>
-                        <div class="card-body">
-                            <table class="table table-bordered table-hover table-striped table-sm">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th class="text-center">Nome</th>
-                                        <th class="text-center">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="lancamento in arrayLancamento">
-                                        <td>{{lancamento.Nome}}</td>
-                                        <td>
-                                            <button class="btn btn-primary"
-                                                @click="PreencherCampos(lancamento.Id)">Editar</button>
-                                            <button class="btn btn-danger"
-                                                @click="Excluir(lancamento.Id)">Excluir</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+            </div>
+            <div class="row pt-3">
+                <div class="card col-md-12 pl-0">
+                    <div class="card-header">
+                        Buscar Lançamento
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-bordered table-hover table-striped table-sm" id="tblLancamento">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">Data Lançamento</th>
+                                    <th class="text-center">Valor</th>
+                                    <th class="text-center">Categoria</th>
+                                    <th class="text-center">Custo</th>
+                                    <th class="text-center">Centro de Custo</th>
+                                    <th class="text-center">Cliente</th>
+                                    <th class="text-center">Conta Bancária</th>
+                                    <th class="text-center">Fornecedor</th>
+                                    <th class="text-center">Descrição</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="lancamento in arrayLancamento">
+                                    <td style="text-align: center; font-size: 14px;">
+                                        {{lancamento.DataLancamentoFormatada}}</td>
+                                    <td style="text-align: center; font-size: 14px;">{{
+                                        parseFloat(lancamento.Valor).toLocaleString('pt-BR', { style:'currency', currency:'BRL' })
+                                    }}
+                                    </td>
+                                    <td style="text-align: center; font-size: 14px;">{{lancamento.Categoria.Nome}}</td>
+                                    <td style="text-align: center; font-size: 14px;">
+                                        {{(lancamento.CustoFixo) ? `Fixo` : `Variável`}}
+                                    </td>
+                                    <td style="text-align: center; font-size: 14px;">{{lancamento.CentroCusto.Nome}}
+                                    </td>
+                                    <td style="text-align: center; font-size: 14px;">{{lancamento.Cliente.Nome}}</td>
+                                    <td style="text-align: center; font-size: 14px;">{{lancamento.ContaBancaria.Nome}}
+                                    </td>
+                                    <td style="text-align: center; font-size: 14px;">{{lancamento.Fornecedor.Nome}}</td>
+                                    <td style="text-align: center; font-size: 14px;">
+                                        <span>{{lancamento.Descricao}}</span>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <div class="btn-group" role="group" aria-label="Acoes">
+                                            <button @click="PreencherCampos(lancamento.Id)"
+                                                :class="`btn btn-primary btn-sm ${(id === lancamento.Id) ? 'active' : ''}`">
+                                                Editar
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" @click="Excluir(lancamento.Id)">
+                                                Excluir
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="../js/jquery.mask.min.js"></script>
 <script src="../js/lancamento.js"></script>
 
 </html>

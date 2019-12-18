@@ -15,7 +15,7 @@ const contaBancariaVue = new Vue({
             digitoAgencia: '',
             conta: '',
             digitoConta: '',
-            saldo: 0,
+            saldo: '',
             arrayContaBancaria: []
         }
     },

@@ -20,7 +20,7 @@ namespace Service.Controllers.Financeiro
         {
             try
             {
-                new LancamentoBusiness().Update(new LancamentoEntity()
+                new LancamentoBusiness().Insert(new LancamentoEntity()
                 {
                     Descricao = model.Descricao,
                     Valor = model.Valor,
@@ -31,7 +31,7 @@ namespace Service.Controllers.Financeiro
                     Cliente = new ClienteEntity() { Id = model.ClienteId },
                     ContaBancaria = new ContaBancariaEntity() { Id = model.ContaBancariaId },
                     Fornecedor = new FornecedorEntity() { Id = model.FornecedorId },
-                    Fechamento = new Entity.Acompanhamento.FechamentoEntity() { Id = model.FornecedorId }
+                    Fechamento = new Entity.Acompanhamento.FechamentoEntity() { Id = model.FechamentoId }
                 });
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
