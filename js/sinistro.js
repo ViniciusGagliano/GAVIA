@@ -10,8 +10,8 @@ const sinistroVue = new Vue({
                 dtInicial: ``,
                 dtFinal: ``,
                 tipoData: 1,
-                representante: 0,
-                seguradora: 0,
+                representante: '',
+                seguradora: '',
                 cobertura: '',
                 segurado: ``,
                 beneficiario: ``,
@@ -64,7 +64,6 @@ const sinistroVue = new Vue({
             }).then(_ => {
                 Swal.fire('Sucesso', 'Lançamento realizado com sucesso', 'success');
                 this.Carregar();
-                this.LimparCampos();
             }).catch(error => {
                 Swal.fire('Erro', 'Algo inesperado ocorreu', 'error');
                 console.log(error);

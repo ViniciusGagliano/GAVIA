@@ -46,7 +46,7 @@ namespace Business
                 ImportacaoBusiness business = new ImportacaoBusiness();
                 ImportacaoEntity importacao = business.GetById(id);
                 LerExcel(importacao);
-                business.Processar(id);
+                new ImportacaoRepository().Processar(id);
                 importacao.Processada = true;
                 business.Update(importacao);
             }

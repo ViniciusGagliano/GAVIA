@@ -63,19 +63,21 @@ const importacaoVue = new Vue({
             }).catch(error => {
                 swal.fire('Erro', `Importação falhou`, 'error');
                 console.log(error);
-            }).always(_ => $.LoadingOverlay('hide'));
+            }).finally(_ => $.LoadingOverlay('hide'));
         },
         Visualizar(id) {
             window.open(`sinistro.html?importacaoId=${id}`, '_self')
         },
         Processar(id) {
+            $.LoadingOverlay('show');
+
             axios.get(`${urlGlobal}/processar/${id}`).then(_ => {
                 Swal.fire('Sucesso', `Processamento concluído`, 'success');
                 this.arrayImportacao.filter(i => i.Id === id)[0].Processada = true;
             }).catch(error => {
                 Swal.fire('Erro', `Processamento falhou`, 'error');
                 console.log(error);
-            });
+            }).finally(_ => $.LoadingOverlay('hide'));
         },
         async Excluir(id) {
             Swal.fire({

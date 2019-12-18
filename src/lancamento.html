@@ -219,7 +219,7 @@
                         <table class="table table-bordered table-hover table-striped table-sm" id="tblLancamento">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th class="text-center">Data Lançamento</th>
+                                    <th class="text-center">Data</th>
                                     <th class="text-center">Valor</th>
                                     <th class="text-center">Categoria</th>
                                     <th class="text-center">Custo</th>
@@ -235,7 +235,7 @@
                                 <tr v-for="lancamento in arrayLancamento">
                                     <td style="text-align: center; font-size: 14px;">
                                         {{lancamento.DataLancamentoFormatada}}</td>
-                                    <td style="text-align: center; font-size: 14px;">{{
+                                    <td style="text-align: center; font-size: 13px;">{{
                                         parseFloat(lancamento.Valor).toLocaleString('pt-BR', { style:'currency', currency:'BRL' })
                                     }}
                                     </td>
